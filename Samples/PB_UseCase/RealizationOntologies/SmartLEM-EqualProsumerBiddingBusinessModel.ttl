@@ -112,7 +112,7 @@ epbbm:BM_ResultsUpperMetadata rdf:type owl:NamedIndividual ,
 epbbm:EqualProsumerBidding.py rdf:type owl:NamedIndividual ,
                                        <http://www.cedri.com/SmartLEM-ExternalCode#ExternalCode> ;
                               <http://www.cedri.com/SmartLEM-ExternalCode#hasFunction> "EqualProsumerBidding" ;
-                              <http://www.cedri.com/SmartLEM-ExternalCode#hasPythonFile> "C:\\1_Arquivos\\3_Universidades\\IPB\\3_Investigacao\\SMARTLEM\\Implementations\\SmartLEM-Ontology\\Samples\\BusinessModels\\EqualProsumerBidding.py" ;
+                              <http://www.cedri.com/SmartLEM-ExternalCode#hasPythonFile> "C:\\1_Arquivos\\3_Universidades\\IPB\\3_Investigacao\\SMARTLEM\\Implementations\\OntologyToAPI\\Samples\\BusinessModels\\EqualProsumerBidding.py" ;
                               <http://www.cedri.com/SmartLEM-ExternalCode#requiresLib> "pandas" .
 
 
