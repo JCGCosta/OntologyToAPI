@@ -1,0 +1,275 @@
+@prefix : <http://www.cedri.com/SmartLEM-PB-UseCase#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix pbuc: <http://www.cedri.com/SmartLEM-PB-UseCase/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.cedri.com/SmartLEM-PB-UseCase#> .
+
+<http://www.cedri.com/SmartLEM-PB-UseCase> rdf:type owl:Ontology ;
+                                            owl:versionIRI <http://www.cedri.com/SmartLEM-PB-UseCase/1.0.0> ;
+                                            owl:imports <http://www.cedri.com/SmartLEM-Metadata/1.0.0> ;
+                                            <http://purl.org/dc/terms/creator> "https://orcid.org/0000-0002-7620-0960" ;
+                                            <http://purl.org/dc/terms/description> "This ontology represent the concepts from Paulo Borges use case metadata of a Peer-to-Peer Electricity Market context." ;
+                                            <http://purl.org/dc/terms/issued> "2025-04-07" ;
+                                            <http://purl.org/dc/terms/modified> "2025-04-07" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.cedri.com/SmartLEM-Communications#hasConnectionString
+<http://www.cedri.com/SmartLEM-Communications#hasConnectionString> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.cedri.com/SmartLEM-Communications#usesTechnology
+<http://www.cedri.com/SmartLEM-Communications#usesTechnology> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology
+<http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.cedri.com/SmartLEM-Metadata#hasDescription
+<http://www.cedri.com/SmartLEM-Metadata#hasDescription> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.cedri.com/SmartLEM-Metadata#hasQuery
+<http://www.cedri.com/SmartLEM-Metadata#hasQuery> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.cedri.com/SmartLEM-Metadata#hasSource
+<http://www.cedri.com/SmartLEM-Metadata#hasSource> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.cedri.com/SmartLEM-Metadata#hasType
+<http://www.cedri.com/SmartLEM-Metadata#hasType> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#duration
+xsd:duration rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/Aggregated
+pbuc:Aggregated rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                rdfs:comment "The aggregated source of data" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ElectricityLoad
+pbuc:ElectricityLoad rdf:type owl:Class ;
+                     rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                     rdfs:comment "The Electricity Load refers to the energy surplus in the last quarter hour time, with values below 0 meaning an grid electricity demand, and values above 0 meaning an grid electricity supply." .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/HouseholderID
+pbuc:HouseholderID rdf:type owl:Class ;
+                   rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                   rdfs:comment "The identifier of a Member in the Local Electricity Market" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/RelativeHumidity
+pbuc:RelativeHumidity rdf:type owl:Class ;
+                      rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                      rdfs:comment "The relative humidity in Percentage (%) at the end of the quarter hour." .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ResidentialElectricityPrice
+pbuc:ResidentialElectricityPrice rdf:type owl:Class ;
+                                 rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                                 rdfs:comment "The Residential Electricity Price offered by an householder per KWh in the last quarter hour." .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ResidentialSolarGeneration
+pbuc:ResidentialSolarGeneration rdf:type owl:Class ;
+                                rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                                rdfs:comment "The Residential Solar Generation refers to the amount in KWh produced by a Solar Generator in the last quarter hour." .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ResidentialWindGeneration
+pbuc:ResidentialWindGeneration rdf:type owl:Class ;
+                               rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                               rdfs:comment "The Residential Wind Generation refers to the amount in KWh produced by a Wind Generator in the last quarter hour." .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/Temperature
+pbuc:Temperature rdf:type owl:Class ;
+                 rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                 rdfs:comment "The temperature in Celsius at the end of the quarter hour." .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/UTCTimestamp
+pbuc:UTCTimestamp rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                  rdfs:comment "This concept refers to a quarter-hour time were the measurements were collected." .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/Aggregated_R
+pbuc:Aggregated_R rdf:type owl:NamedIndividual ,
+                           pbuc:Aggregated ;
+                  <http://www.cedri.com/SmartLEM-Metadata#hasSource> pbuc:Aggregated_S ;
+                  <http://www.cedri.com/SmartLEM-Metadata#hasType> "dict" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/Aggregated_S
+pbuc:Aggregated_S rdf:type owl:NamedIndividual ,
+                           <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                  <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "This query retrieves all the available LEM data from the PB use case as a table." ;
+                  <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT * FROM lem_data;" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/DatabaseCommunication_R
+pbuc:DatabaseCommunication_R rdf:type owl:NamedIndividual ,
+                                      <http://www.cedri.com/SmartLEM-Communications#DatabaseCommunication> ;
+                             <http://www.cedri.com/SmartLEM-Communications#hasConnectionString> "mysql+aiomysql://root:Gray123!@127.0.0.1:3306/pb_lem" ;
+                             <http://www.cedri.com/SmartLEM-Communications#usesTechnology> "MYSQL" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ElectricityLoad_R
+pbuc:ElectricityLoad_R rdf:type owl:NamedIndividual ,
+                                pbuc:ElectricityLoad ;
+                       <http://www.cedri.com/SmartLEM-Metadata#hasSource> pbuc:ElectricityLoad_S ;
+                       <http://www.cedri.com/SmartLEM-Metadata#hasType> "float" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ElectricityLoad_S
+pbuc:ElectricityLoad_S rdf:type owl:NamedIndividual ,
+                                <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                       <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "This query retrieves the Electricity Load as a list from the LEM data in PB use case." ;
+                       <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT Electricity_Load FROM lem_data;" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/HouseholderID_R
+pbuc:HouseholderID_R rdf:type owl:NamedIndividual ,
+                              pbuc:HouseholderID ;
+                     <http://www.cedri.com/SmartLEM-Metadata#hasSource> pbuc:HouseholderID_S ;
+                     <http://www.cedri.com/SmartLEM-Metadata#hasType> "integer" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/HouseholderID_S
+pbuc:HouseholderID_S rdf:type owl:NamedIndividual ,
+                              <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                     <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "This query retrieves the householder Identifier as a list from the LEM data in PB use case." ;
+                     <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT Member_ID FROM lem_data;" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/RelativeHumidity_R
+pbuc:RelativeHumidity_R rdf:type owl:NamedIndividual ,
+                                 pbuc:RelativeHumidity ;
+                        <http://www.cedri.com/SmartLEM-Metadata#hasSource> pbuc:RelativeHumidity_S ;
+                        <http://www.cedri.com/SmartLEM-Metadata#hasType> "float" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/RelativeHumidity_S
+pbuc:RelativeHumidity_S rdf:type owl:NamedIndividual ,
+                                 <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                        <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "This query retrieves the Relative Humidity as a list from the LEM data in PB use case." ;
+                        <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT Relative_Humidity FROM lem_data;" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ResidentialElectricityPrice_R
+pbuc:ResidentialElectricityPrice_R rdf:type owl:NamedIndividual ,
+                                            pbuc:ResidentialElectricityPrice ;
+                                   <http://www.cedri.com/SmartLEM-Metadata#hasSource> pbuc:ResidentialElectricityPrice_S ;
+                                   <http://www.cedri.com/SmartLEM-Metadata#hasType> "float" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ResidentialElectricityPrice_S
+pbuc:ResidentialElectricityPrice_S rdf:type owl:NamedIndividual ,
+                                            <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                                   <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "This query retrieves the Residential Electricity Price as a list from the LEM data in PB use case." ;
+                                   <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT Residential_Electricity_Price FROM lem_data;" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ResidentialSolarGeneration_R
+pbuc:ResidentialSolarGeneration_R rdf:type owl:NamedIndividual ,
+                                           pbuc:ResidentialSolarGeneration ;
+                                  <http://www.cedri.com/SmartLEM-Metadata#hasSource> pbuc:ResidentialSolarGeneration_S ;
+                                  <http://www.cedri.com/SmartLEM-Metadata#hasType> "float" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ResidentialSolarGeneration_S
+pbuc:ResidentialSolarGeneration_S rdf:type owl:NamedIndividual ,
+                                           <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                                  <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "This query retrieves the Residential Solar Generation as a list from the LEM data in PB use case." ;
+                                  <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT Residential_Solar_Generation FROM lem_data;" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ResidentialWindGeneration_R
+pbuc:ResidentialWindGeneration_R rdf:type owl:NamedIndividual ,
+                                          pbuc:ResidentialWindGeneration ;
+                                 <http://www.cedri.com/SmartLEM-Metadata#hasSource> pbuc:ResidentialWindGeneration_S ;
+                                 <http://www.cedri.com/SmartLEM-Metadata#hasType> "float" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/ResidentialWindGeneration_S
+pbuc:ResidentialWindGeneration_S rdf:type owl:NamedIndividual ,
+                                          <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                                 <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "This query retrieves the Residential Wind Generation as a list from the LEM data in PB use case." ;
+                                 <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT Residential_Wind_Generation FROM lem_data;" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/Temperature_R
+pbuc:Temperature_R rdf:type owl:NamedIndividual ,
+                            pbuc:Temperature ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasSource> pbuc:Temperature_S ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasType> "float" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/Temperature_S
+pbuc:Temperature_S rdf:type owl:NamedIndividual ,
+                            <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "This query retrieves the Temperature as a list from the LEM data in PB use case." ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT Temperature FROM lem_data;" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/UTCTimestamp_R
+pbuc:UTCTimestamp_R rdf:type owl:NamedIndividual ,
+                             pbuc:UTCTimestamp ;
+                    <http://www.cedri.com/SmartLEM-Metadata#hasSource> pbuc:UTCTimestamp_S ;
+                    <http://www.cedri.com/SmartLEM-Metadata#hasType> "timestamp" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/UTCTimestamp_S
+pbuc:UTCTimestamp_S rdf:type owl:NamedIndividual ,
+                             <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                    <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "This query retrieves the collection UTCTimestamp as a list from the LEM data in PB use case." ;
+                    <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT UTC_T FROM lem_data;" .
+
+
+###  http://www.cedri.com/SmartLEM-PB-UseCase/UpperMetadata
+pbuc:UpperMetadata rdf:type owl:NamedIndividual ,
+                            <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology> pbuc:DatabaseCommunication_R .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
