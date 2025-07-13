@@ -7,7 +7,7 @@
 
 ## Abstract Ontology Classes:
 
-The following classes, relationships and data properties serve as a semantic blueprint for both metadata and business models.
+- The following classes, relationships and data properties serve as a semantic blueprint for both metadata and business models.
 
 <img src="https://raw.githubusercontent.com/JCGCosta/OntologyToAPI/refs/heads/feat/change-ontology-loading/Ontologies/2%20Smart-LEM%20Ontologies/Ontology%20Abstract%20Modules.jpg?raw=true" alt="AbstractOntologyClasses" title="Abstract Ontology Classes.">
 
