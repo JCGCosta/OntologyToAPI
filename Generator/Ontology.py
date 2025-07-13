@@ -15,28 +15,25 @@ from Generator.Connectors.IndentifyConnector import identifyConnector
 from Generator.Utility import ensure_package_installed
 
 class Ontology:
-    def __init__(self, paths: List[str]):
+    def __init__(self):
         self.g = Graph()
-        for path in paths:
-            self._setup(path)
-        self.data = self._serializeOntology()
-        self.bms = self._constructBusinessModels()
-        logging.info(f'Serialization Finished.')
+        self.data = {}
+        self.bms = {}
+
+    def parse_ontology(self, path: str):
+        if path.endswith('.ttl'):
+            self.g.parse(path, format='turtle')
+        elif path.endswith('.owl') or path.endswith('.rdf'):
+            self.g.parse(path, format='xml')
+        else:
+            raise ValueError(f'File extension must be .ttl or .owl or .rdf ({path} could not be parsed)')
+        logging.info(f'Ontology \"{path}\" parsed successfully.')
 
     def __repr__(self):
         return (f"data(\n{pprint.pformat(self.data, indent=2)}\n)\n"
                 f"business_models(\n{pprint.pformat(self.bms, indent=2)}\n)")
 
-    def _setup(self, file_path: str):
-        logging.info(f'Parsing ontology from \"{file_path}\"')
-        if file_path.endswith('.ttl'):
-            self.g.parse(file_path, format='turtle')
-        elif file_path.endswith('.owl') or file_path.endswith('.rdf'):
-            self.g.parse(file_path, format='xml')
-        else:
-            raise ValueError(f'File extension must be .ttl or .owl or .rdf ({file_path} could not be parsed)')
-
-    def get_metadata_by_name(self, name: str):
+    def _get_metadata_by_name(self, name: str):
         for namespace, content in self.data.items():
             metadata_list = content.get("Metadata", [])
             for metadata in metadata_list:
@@ -44,7 +41,17 @@ class Ontology:
                     return metadata
         return None
 
-    def _serializeOntology(self):
+    def _verify_metadata(self, q: str):
+        md = []
+        for row in self.g.query(q):
+            metadata_obj = self._get_metadata_by_name(self.g.qname(row[1]))
+            if not metadata_obj:
+                raise ValueError(
+                    f'The {self.g.qname(row[1])} metadata which is required by the {self.g.qname(row[0])} could not be found in the ontology.')
+            md.append(metadata_obj)
+        return md
+
+    def serialize_metadata(self):
         data = {}
         for row in self.g.query(GET_METADATA_QUERY):
             source = Source(desc=row[2], query=row[3])
@@ -59,25 +66,14 @@ class Ontology:
             onto_pkg = self.g.qname(comm[2]).split(":")[0]
             data[onto_pkg]["CommTechnology"] = identifyConnector(comm_type, comm_technology.value, args)
             logging.info(f'{onto_pkg}:{comm_type}:{comm_technology} CONNECTOR was configured successfully;')
-        return data
+        self.data = data
 
-    def _verifyMetadata(self, q: str):
-        md = []
-        for row in self.g.query(q):
-            metadata_obj = self.get_metadata_by_name(self.g.qname(row[1]))
-            if not metadata_obj:
-                raise ValueError(
-                    f'The {self.g.qname(row[1])} metadata which is required by the {self.g.qname(row[0])} could not be found in the ontology.')
-            md.append(metadata_obj)
-        return md
-
-    def _constructBusinessModels(self):
+    def serialize_business_models(self):
         BMs = {}
         for ec in self.g.query(GET_EXTERNAL_CODE_FOR_BM_QUERY):
             bm_name = self.g.qname(ec[0])
-            logging.info(f'{bm_name} BUSINESS MODEL serialized successfully;')
-            required_metadata = self._verifyMetadata(GET_REQUIRED_MD_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
-            results_metadata = self._verifyMetadata(GET_RESULTS_MD_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
+            required_metadata = self._verify_metadata(GET_REQUIRED_MD_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
+            results_metadata = self._verify_metadata(GET_RESULTS_MD_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
             for module in str(ec[3]).split(","): ensure_package_installed(module)
             BMs[bm_name] = BusinessModel(name=bm_name.split(":")[-1],
                                communications={pkg_name: pkg_data["CommTechnology"] for pkg_name, pkg_data in self.data.items()},
@@ -87,4 +83,5 @@ class Ontology:
                                     pythonFile=str(ec[2]),
                                     function=str(ec[4]),
                                     requiresLib=str(ec[3]).split(",")))
-        return BMs
+            logging.info(f'{bm_name} BUSINESS MODEL serialized successfully;')
+        self.bms = BMs
