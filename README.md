@@ -73,9 +73,12 @@ from Generator.APIGenerator import Generator
 if __name__ == "__main__":
     APIGen = Generator(showLogs=True)
     APIGen.load_ontologies(paths=[
-        "Your/Metadata/Ontology/.ttl.owl.rdf",
+        "Your/Metadata/Ontology/.ttl.owl.rdf"
+    ])
+    APIGen.load_ontologies(paths=[
         "Your/BusinessModel/Ontology/.ttl.owl.rdf"
     ])
+    APIGen.serialize_ontologies()
     api_app = APIGen.generate_api_routes()
     uvicorn.run(api_app, host="127.0.0.1", port=5000)
 ```
