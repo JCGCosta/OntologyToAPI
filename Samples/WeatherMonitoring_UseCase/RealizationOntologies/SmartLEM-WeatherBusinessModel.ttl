@@ -90,7 +90,7 @@ wmbm:WeatherMonitoring rdf:type owl:Class ;
 wmbm:WeatherMonitoring.py rdf:type owl:NamedIndividual ,
                                    <http://www.cedri.com/SmartLEM-ExternalCode#ExternalCode> ;
                           <http://www.cedri.com/SmartLEM-ExternalCode#hasFunction> "WeatherMonitoring" ;
-                          <http://www.cedri.com/SmartLEM-ExternalCode#hasPythonFile> "C:\\1_Arquivos\\3_Universidades\\IPB\\3_Investigacao\\SMARTLEM\\Implementations\\Updates\\Samples\\BusinessModels\\WeatherMonitoring.py" ;
+                          <http://www.cedri.com/SmartLEM-ExternalCode#hasPythonFile> "C:\\1_Arquivos\\3_Universidades\\IPB\\3_Investigacao\\SMARTLEM\\Implementations\\OntologyToAPI\\Samples\\BusinessModels\\WeatherMonitoring.py" ;
                           <http://www.cedri.com/SmartLEM-ExternalCode#requiresLib> "requests" .
 
 
