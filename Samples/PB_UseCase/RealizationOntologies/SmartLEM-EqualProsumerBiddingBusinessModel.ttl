@@ -36,6 +36,18 @@
 <http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
 
 
+###  http://www.cedri.com/SmartLEM-BusinessModel#hasExternalCode
+<http://www.cedri.com/SmartLEM-BusinessModel#hasExternalCode> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.cedri.com/SmartLEM-BusinessModel#requiresMetadata
+<http://www.cedri.com/SmartLEM-BusinessModel#requiresMetadata> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.cedri.com/SmartLEM-BusinessModel#resultsMetadata
+<http://www.cedri.com/SmartLEM-BusinessModel#resultsMetadata> rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.cedri.com/SmartLEM-ExternalCode#hasFunction
 <http://www.cedri.com/SmartLEM-ExternalCode#hasFunction> rdf:type owl:AnnotationProperty .
 
@@ -88,31 +100,11 @@ epbbm:TradingCompanySmallBid rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/AggregatedResults_R
-epbbm:AggregatedResults_R rdf:type owl:NamedIndividual ,
-                                   <http://www.cedri.com/SmartLEM-PB-UseCase/Aggregated> ;
-                          <http://www.cedri.com/SmartLEM-Metadata#hasSource> epbbm:AggregatedResults_S ;
-                          <http://www.cedri.com/SmartLEM-Metadata#hasType> "dict" .
-
-
-###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/AggregatedResults_S
-epbbm:AggregatedResults_S rdf:type owl:NamedIndividual ,
-                                   <http://www.cedri.com/SmartLEM-Metadata#Source> ;
-                          <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "This query retrieves all the results of the Equal Prosumers Bidding billing strategy applied to the PB use case as a table." ;
-                          <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT * FROM LEM_BILLING lb INNER JOIN LEM_RESULTS lr ON lb.RESULTS_ID = lr.RESULTS_ID;" .
-
-
-###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/BM_ResultsUpperMetadata
-epbbm:BM_ResultsUpperMetadata rdf:type owl:NamedIndividual ,
-                                       <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
-                              <http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology> epbbm:ResultsDatabaseCommunication_R .
-
-
 ###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/EqualProsumerBidding.py
 epbbm:EqualProsumerBidding.py rdf:type owl:NamedIndividual ,
                                        <http://www.cedri.com/SmartLEM-ExternalCode#ExternalCode> ;
                               <http://www.cedri.com/SmartLEM-ExternalCode#hasFunction> "EqualProsumerBidding" ;
-                              <http://www.cedri.com/SmartLEM-ExternalCode#hasPythonFile> "C:\\1_Arquivos\\3_Universidades\\IPB\\3_Investigacao\\SMARTLEM\\Implementations\\OntologyToAPI\\Samples\\BusinessModels\\EqualProsumerBidding.py" ;
+                              <http://www.cedri.com/SmartLEM-ExternalCode#hasPythonFile> "C:\\1_Arquivos\\3_Universidades\\IPB\\3_Investigacao\\SMARTLEM\\Implementations\\Updates\\Samples\\BusinessModels\\EqualProsumerBidding.py" ;
                               <http://www.cedri.com/SmartLEM-ExternalCode#requiresLib> "pandas" .
 
 
@@ -126,23 +118,7 @@ epbbm:EqualProsumerBiddingBM rdf:type owl:NamedIndividual ,
                                                                                             <http://www.cedri.com/SmartLEM-PB-UseCase/HouseholderID_R> ,
                                                                                             <http://www.cedri.com/SmartLEM-PB-UseCase/ResidentialSolarGeneration_R> ,
                                                                                             <http://www.cedri.com/SmartLEM-PB-UseCase/ResidentialWindGeneration_R> ,
-                                                                                            <http://www.cedri.com/SmartLEM-PB-UseCase/UTCTimestamp_R> ;
-                             <http://www.cedri.com/SmartLEM-BusinessModel#resultsMetadata> epbbm:AggregatedResults_R ,
-                                                                                           epbbm:MembersBilling_R .
-
-
-###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/MembersBilling_R
-epbbm:MembersBilling_R rdf:type owl:NamedIndividual ,
-                                epbbm:MembersBilling ;
-                       <http://www.cedri.com/SmartLEM-Metadata#hasSource> epbbm:MembersBilling_S ;
-                       <http://www.cedri.com/SmartLEM-Metadata#hasType> "dict" .
-
-
-###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/MembersBilling_S
-epbbm:MembersBilling_S rdf:type owl:NamedIndividual ,
-                                <http://www.cedri.com/SmartLEM-Metadata#Source> ;
-                       <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "The members billing resulted of the application of the Equal Prosumer Bidding Business Model" ;
-                       <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT lr.UTC_T, m.MEMBER_NAME, m.MEMBER_TYPE, lb.BILL FROM LEM_BILLING lb JOIN MEMBER m ON lb.MEMBER_ID = m.MEMBER_ID JOIN LEM_RESULTS lr ON lb.RESULTS_ID = lr.RESULTS_ID;" .
+                                                                                            <http://www.cedri.com/SmartLEM-PB-UseCase/UTCTimestamp_R> .
 
 
 ###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/ProsumersCommunityBid_R
@@ -155,15 +131,9 @@ epbbm:ProsumersCommunityBid_R rdf:type owl:NamedIndividual ,
 ###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/ProsumersCommunityBid_S
 epbbm:ProsumersCommunityBid_S rdf:type owl:NamedIndividual ,
                                        <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                              <http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology> <http://www.cedri.com/SmartLEM-PB-UseCase/DatabaseCommunication_R> ;
                               <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "The source of where the prosumers community bid is stored." ;
                               <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT Prosumers_Community_Price from PRICING_DATA;" .
-
-
-###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/ResultsDatabaseCommunication_R
-epbbm:ResultsDatabaseCommunication_R rdf:type owl:NamedIndividual ,
-                                              <http://www.cedri.com/SmartLEM-Communications#DatabaseCommunication> ;
-                                     <http://www.cedri.com/SmartLEM-Communications#hasConnectionString> "mysql+aiomysql://root:test@127.0.0.1:3306/pb_lem" ;
-                                     <http://www.cedri.com/SmartLEM-Communications#usesTechnology> "MYSQL" .
 
 
 ###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/TradingCompanySmallBid_R
@@ -176,6 +146,7 @@ epbbm:TradingCompanySmallBid_R rdf:type owl:NamedIndividual ,
 ###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/TradingCompanySmallBid_S
 epbbm:TradingCompanySmallBid_S rdf:type owl:NamedIndividual ,
                                         <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                               <http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology> <http://www.cedri.com/SmartLEM-PB-UseCase/DatabaseCommunication_R> ;
                                <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "The source where the trading company small bid is stored." ;
                                <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT Trading_Company_Small_Price from PRICING_DATA;" .
 

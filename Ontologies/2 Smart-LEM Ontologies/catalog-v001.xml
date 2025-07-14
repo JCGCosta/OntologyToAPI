@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="Imports Wizard Entry" name="http://www.cedri.com/SmartLEM-ExternalCode/1.0.0" uri="SmartLEM-ExternalCode.ttl"/>
-    <uri id="Imports Wizard Entry" name="http://www.cedri.com/SmartLEM-Metadata/1.0.0" uri="SmartLEM-Metadata.ttl"/>
-    <uri id="Imports Wizard Entry" name="http://www.cedri.com/SmartLEM-Communications/1.0.0" uri="SmartLEM-Communication.ttl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
 </catalog>

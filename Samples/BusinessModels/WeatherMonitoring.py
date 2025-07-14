@@ -1,8 +1,9 @@
 import requests
+from Generator.Connectors.Stateless.APIConnection import APIConnection
 
-def WeatherMonitoring(args):
+async def WeatherMonitoring(args):
     API_KEY = "f73ff7f7b0504575998152153251407"
-    print(args)
-    url = f"{requestURL}&latitude={Latitude}&longitude={Longitude}"
-    #response = requests.get(url)
-    return {} #response.content
+    Latitude = args["LEMLatitude_R"][0]["LEMLatitude"]
+    Longitude = args["LEMLongitude_R"][0]["LEMLongitude"]
+    api = APIConnection({"hasRequestURL": "http://api.weatherapi.com/v1/current.json"})
+    return api.exec_query(f"?key={API_KEY}&q={Latitude},{Longitude}")

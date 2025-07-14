@@ -4,22 +4,15 @@ from Generator.Connectors.Stateless.MYSQLConnection import MySQLConnection
 from Generator.Connectors.Stateless.MongoDBConnection import MongoDBConnection
 
 SUPPORTED_CONNECTIONS = {
-    "APICommunication": {
-        "API": APIConnection,
-    },
-    "DatabaseCommunication": {
-        "MYSQL": MySQLConnection,
-        "MONGODB": MongoDBConnection,
-    },
-
-    "SocketConnection": {
-        "Socket": SocketConnection,
-    }
+    "API": APIConnection,
+    "MYSQL": MySQLConnection,
+    "MONGODB": MongoDBConnection,
+    "Socket": SocketConnection
 }
 
-def identifyConnector(CommunicationType, CommunicationTechnology, args):
+def identifyConnector(CommunicationTechnology, args):
     try:
-        connector_class = SUPPORTED_CONNECTIONS[CommunicationType][CommunicationTechnology]
+        connector_class = SUPPORTED_CONNECTIONS[str(CommunicationTechnology)]
         return connector_class(args)
     except KeyError as e:
         raise ValueError(f"Unsupported type or technology: {e}")

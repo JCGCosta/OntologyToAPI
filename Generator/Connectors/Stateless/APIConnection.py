@@ -7,6 +7,6 @@ class APIConnection:
     def exec_query(self, endpoint_params: str):
         fullURL = self.baseURL + endpoint_params
         try:
-            return requests.get(fullURL).json()
+            return req.get(fullURL).json()
         except Exception as e:
             return {'error': str(e)}
