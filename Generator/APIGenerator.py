@@ -2,15 +2,10 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from typing import List
 import pprint, logging
+from pathlib import Path
 
 from Generator.Utility import *
 from Generator.Ontology import Ontology
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(message)s",
-    datefmt="%d-%m-%Y %H:%M:%S"
-)
 
 def create_metadata_handler(db_connector, query, name):
     async def handler():
@@ -37,16 +32,29 @@ def create_business_model_handler(db_connectors: dict, required_metadata: list, 
     return handler
 
 class Generator:
-    def __init__(self, ontologies: List[str]):
-        self.ontology = Ontology(paths=ontologies)
+    def __init__(self, showLogs: bool = False):
+        self.ontology = Ontology()
         self.routes = []
         self.app = FastAPI()
+        logging.basicConfig(
+            level=logging.INFO if showLogs else logging.ERROR,
+            format="%(asctime)s %(levelname)s %(message)s",
+            datefmt="%d-%m-%Y %H:%M:%S"
+        )
 
         @self.app.get("/", include_in_schema=False)
         async def root():
             return RedirectResponse(url="/docs")
 
-    def generate_routes(self) -> FastAPI:
+    def load_ontologies(self, paths: List[str]):
+        for path in paths:
+            if not Path(path).exists():
+                raise FileNotFoundError(f"The path does not exist: {path}")
+            self.ontology.parse_ontology(path=path)
+        self.ontology.serialize_metadata()
+        self.ontology.serialize_business_models()
+
+    def generate_api_routes(self) -> FastAPI:
         logging.info(f'Generating API routes for the available metadata...')
         for pkg_name, pkg_data in self.ontology.data.items():
             db_connector = pkg_data["CommTechnology"]
