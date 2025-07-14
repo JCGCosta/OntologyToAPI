@@ -162,7 +162,7 @@ epbbm:ProsumersCommunityBid_S rdf:type owl:NamedIndividual ,
 ###  http://www.cedri.com/SmartLEM-PB-EqualProsumerBiddingBM/ResultsDatabaseCommunication_R
 epbbm:ResultsDatabaseCommunication_R rdf:type owl:NamedIndividual ,
                                               <http://www.cedri.com/SmartLEM-Communications#DatabaseCommunication> ;
-                                     <http://www.cedri.com/SmartLEM-Communications#hasConnectionString> "mysql+aiomysql://root:Gray123!@127.0.0.1:3306/pb_lem" ;
+                                     <http://www.cedri.com/SmartLEM-Communications#hasConnectionString> "mysql+aiomysql://root:test@127.0.0.1:3306/pb_lem" ;
                                      <http://www.cedri.com/SmartLEM-Communications#usesTechnology> "MYSQL" .
 
 

@@ -1,12 +1,15 @@
 from sqlalchemy import create_engine, text
 import pandas as pd
+from Settings import auto_config as cfg
 
-username = "root"
-password = "Gray123!"
-host = "localhost"
-port = 3306
+username = cfg.MYSQL_USERNAME
+password = cfg.MYSQL_PASSWORD
+host = cfg.MYSQL_IP_ADDRESS
+port = cfg.MYSQL_PORT
 
 engine = create_engine(f"mysql+pymysql://{username}:{password}@{host}:{port}/")
+
+print(f"Connected to {host}:{port} with the following credentials: {username}:{password}.")
 
 # Read and execute the SQL file
 with open("pb_lem_SQL_database.sql", "r") as file:
@@ -28,7 +31,6 @@ df.columns = ["MEMBER_ID", "UTC_T", "ELECTRICITY_LOAD", "RESIDENTIAL_ELECTRICITY
 
 df["UTC_T"] = pd.to_datetime(df["UTC_T"], format="%d/%m/%Y %H:%M")
 
-print(df.head())
 def insertSimulation(row, conn):
     # Prepare SQL statement with placeholders
     sql = text("""
@@ -56,7 +58,8 @@ def insertSimulation(row, conn):
 
     conn.execute(sql, params)
 
-
 # Use a single connection and transaction for all rows
 with engine.begin() as conn:
     df.apply(insertSimulation, axis=1, args=(conn,))
+
+print("LEM Scenario inserted into the database.")
