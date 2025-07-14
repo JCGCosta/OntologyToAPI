@@ -62,9 +62,11 @@ class Ontology:
         for comm in self.g.query(GET_COMMUNICATION_TECH_QUERY):
             comm_type = self.g.qname(comm[0]).split(":")[-1]
             comm_technology = comm[1]
-            args = {self.g.qname(row[0]).split(":")[-1]: row[1] for row in self.g.query(GET_COMMUNICATION_TECH_ARGS_QUERY)}
+            args = {self.g.qname(row[0]).split(":")[-1]: row[1] for row in self.g.query(GET_COMMUNICATION_TECH_ARGS_QUERY + URIRef(comm[-1]) + ">)}")}
             onto_pkg = self.g.qname(comm[2]).split(":")[0]
-            data[onto_pkg]["CommTechnology"] = identifyConnector(comm_type, comm_technology.value, args)
+            if data[onto_pkg]["CommTechnology"] is None:
+                data[onto_pkg]["CommTechnology"] = []
+            data[onto_pkg]["CommTechnology"].append(identifyConnector(comm_type, comm_technology.value, args))
             logging.info(f'{onto_pkg}:{comm_type}:{comm_technology} CONNECTOR was configured successfully;')
         self.data = data
 

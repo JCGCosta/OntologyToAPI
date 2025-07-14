@@ -24,9 +24,8 @@ GET_COMMUNICATION_TECH_ARGS_QUERY = """
           ?m <http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology> ?ct .
           ?ct ?arg ?argv .
           FILTER(?arg != <http://www.cedri.com/SmartLEM-Communications#usesTechnology> &&
-          ?arg != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>)
-        }
-        """
+          ?arg != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> &&
+          ?ct = <"""
 
 GET_BM_NAME_QUERY = """
         SELECT ?bm

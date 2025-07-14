@@ -2,10 +2,10 @@ import requests as req
 
 class APIConnection:
     def __init__(self, args):
-        self.baseURL = args["hasBaseURL"]
+        self.baseURL = args["hasRequestURL"]
 
-    def exec_query(self, endpoint_and_params: str):
-        fullURL = self.baseURL + endpoint_and_params
+    def exec_query(self, endpoint_params: str):
+        fullURL = self.baseURL + endpoint_params
         try:
             return requests.get(fullURL).json()
         except Exception as e:

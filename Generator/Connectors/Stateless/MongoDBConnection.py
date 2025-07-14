@@ -1,10 +1,21 @@
-from pymongo import MongoClient
+import asyncio
+from pymongo import AsyncMongoClient
+import json, logging
 
 class MongoDBConnection:
     def __init__(self, args):
-        self.client = MongoClient(args["hasConnectionString"])
-        self.db = self.client[connectionString.split('/')[-1]]
+        connString = args["hasConnectionString"].split('/')
+        self.client = AsyncMongoClient("/".join(connString[:-1]))
+        self.db = self.client[connString[-1]]
 
-    def exec_query(self, collection: str, query: dict):
-        collection = self.db[collection]
-        return list(collection.find({}, query))
+    async def exec_query(self, collection_query: str):
+        query_info = collection_query.split(".")
+        collection = self.db[query_info[0]]
+        query = json.loads(query_info[1])
+        cursor = collection.find({}, query)
+        results = await cursor.to_list()
+        if not results: return []
+        if "_id" in results[0].keys():
+            for i in results:
+                i["_id"] = str(i["_id"])
+        return results

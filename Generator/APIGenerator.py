@@ -10,7 +10,7 @@ from Generator.Ontology import Ontology
 def create_metadata_handler(db_connector, query, name):
     async def handler():
         try:
-            result = await db_connector.exec_query(query)
+            result = await db_connector[0].exec_query(query)
             return {"data": result}
         except Exception as e:
             logging.exception(f"Error running query for {name}")
@@ -23,7 +23,7 @@ def create_business_model_handler(db_connectors: dict, required_metadata: list, 
         for md in required_metadata:
             pkg, name = md.name.split(":")
             try:
-                aggregated_res[name] = await db_connectors[pkg].exec_query(md.hasSource.query)
+                aggregated_res[name] = await db_connectors[pkg][0].exec_query(md.hasSource.query)
             except Exception as e:
                 logging.exception(f"Error running query for {name}")
                 return {"error": str(e)}
@@ -51,6 +51,8 @@ class Generator:
             if not Path(path).exists():
                 raise FileNotFoundError(f"The path does not exist: {path}")
             self.ontology.parse_ontology(path=path)
+
+    def serialize_ontologies(self):
         self.ontology.serialize_metadata()
         self.ontology.serialize_business_models()
 
