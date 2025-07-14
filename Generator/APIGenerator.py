@@ -7,23 +7,23 @@ from pathlib import Path
 from Generator.Utility import *
 from Generator.Ontology import Ontology
 
-def create_metadata_handler(db_connector, query, name):
+def create_metadata_handler(connector, query: str, name: str):
     async def handler():
         try:
-            result = await db_connector[0].exec_query(query)
+            result = await connector.exec_query(query)
             return {"data": result}
         except Exception as e:
             logging.exception(f"Error running query for {name}")
             return {"error": str(e)}
     return handler
 
-def create_business_model_handler(db_connectors: dict, required_metadata: list, external_function):
+def create_business_model_handler(required_metadata: list, external_function):
     async def handler():
-        aggregated_res = {"conn": db_connectors}
+        aggregated_res = {}
         for md in required_metadata:
             pkg, name = md.name.split(":")
             try:
-                aggregated_res[name] = await db_connectors[pkg][0].exec_query(md.hasSource.query)
+                aggregated_res[name] = await md.hasSource.comm_technology.exec_query(md.hasSource.query)
             except Exception as e:
                 logging.exception(f"Error running query for {name}")
                 return {"error": str(e)}
@@ -59,12 +59,12 @@ class Generator:
     def generate_api_routes(self) -> FastAPI:
         logging.info(f'Generating API routes for the available metadata...')
         for pkg_name, pkg_data in self.ontology.data.items():
-            db_connector = pkg_data["CommTechnology"]
-            for md in pkg_data["Metadata"]:
+            for md in pkg_data:
                 if not md.hasSource or not md.hasSource.query:
                     continue  # Skip metadata without source query
                 route_path = f"/{pkg_name}/{md.name.split(':')[-1]}"
                 query = md.hasSource.query
+                db_connector = md.hasSource.comm_technology
                 handler = create_metadata_handler(db_connector, query, md.name)
                 self.app.add_api_route(
                     path=route_path,
@@ -78,7 +78,7 @@ class Generator:
         for bm_name, bm_dt in self.ontology.bms.items():
             name = bm_name.split(":")
             ec_func = import_function_from_file(filepath=bm_dt.externalCode.pythonFile, function_name=bm_dt.externalCode.function)
-            handler = create_business_model_handler(bm_dt.communications, bm_dt.requiresMetadata, ec_func)
+            handler = create_business_model_handler(bm_dt.requiresMetadata, ec_func)
             self.app.add_api_route(
                 path=f"/{name[0]}/{name[1]}/run",
                 endpoint=handler,

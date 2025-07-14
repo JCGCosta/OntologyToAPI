@@ -49,7 +49,7 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology
 :hasCommunicationTechnology rdf:type owl:ObjectProperty ,
                                      owl:FunctionalProperty ;
-                            rdfs:domain :Metadata ;
+                            rdfs:domain :Source ;
                             rdfs:range <http://www.cedri.com/SmartLEM-Communications/CommunicationTechnology> ;
                             rdfs:comment "The metadata utilizes a communication technology to be achievable" .
 
@@ -66,14 +66,6 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Data properties
 #################################################################
 
-###  http://www.cedri.com/SmartLEM-Metadata#hasType
-<http://www.cedri.com/SmartLEM-Metadata#hasType> rdf:type owl:DatatypeProperty ,
-                                                                owl:FunctionalProperty ;
-                                                       rdfs:domain :Metadata ;
-                                                       rdfs:range xsd:string ;
-                                                       rdfs:comment "the metadata data type" .
-
-
 ###  http://www.cedri.com/SmartLEM-Metadata#hasDescription
 :hasDescription rdf:type owl:DatatypeProperty ,
                          owl:FunctionalProperty ;
@@ -88,6 +80,14 @@ xsd:duration rdf:type rdfs:Datatype .
           rdfs:domain :Source ;
           rdfs:range xsd:string ;
           rdfs:comment "an query to retrieve the data from a given source" .
+
+
+###  http://www.cedri.com/SmartLEM-Metadata#hasType
+:hasType rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :Metadata ;
+         rdfs:range xsd:string ;
+         rdfs:comment "the metadata data type" .
 
 
 #################################################################

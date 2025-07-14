@@ -35,8 +35,7 @@ class Ontology:
 
     def _get_metadata_by_name(self, name: str):
         for namespace, content in self.data.items():
-            metadata_list = content.get("Metadata", [])
-            for metadata in metadata_list:
+            for metadata in content:
                 if metadata.name == name:
                     return metadata
         return None
@@ -54,20 +53,14 @@ class Ontology:
     def serialize_metadata(self):
         data = {}
         for row in self.g.query(GET_METADATA_QUERY):
-            source = Source(desc=row[2], query=row[3])
+            args = {self.g.qname(row[0]).split(":")[-1]: row[1] for row in
+                    self.g.query(GET_COMMUNICATION_TECH_ARGS_QUERY + URIRef(row[4]) + ">)}")}
+            comm_tech = identifyConnector(row[5], args)
+            source = Source(desc=row[2], query=row[3], comm_technology=comm_tech)
             onto_pkg = self.g.qname(row[0]).split(":")[0]
-            if onto_pkg not in data.keys(): data[onto_pkg] = {"Metadata": [], "CommTechnology": None}
-            data[onto_pkg]["Metadata"].append(Metadata(name=self.g.qname(row[0]), type=row[1], hasSource=source))
+            if onto_pkg not in data.keys(): data[onto_pkg] = []
+            data[onto_pkg].append(Metadata(name=self.g.qname(row[0]), type=row[1], hasSource=source))
             logging.info(f'{self.g.qname(row[0])} METADATA serialized successfully;')
-        for comm in self.g.query(GET_COMMUNICATION_TECH_QUERY):
-            comm_type = self.g.qname(comm[0]).split(":")[-1]
-            comm_technology = comm[1]
-            args = {self.g.qname(row[0]).split(":")[-1]: row[1] for row in self.g.query(GET_COMMUNICATION_TECH_ARGS_QUERY + URIRef(comm[-1]) + ">)}")}
-            onto_pkg = self.g.qname(comm[2]).split(":")[0]
-            if data[onto_pkg]["CommTechnology"] is None:
-                data[onto_pkg]["CommTechnology"] = []
-            data[onto_pkg]["CommTechnology"].append(identifyConnector(comm_type, comm_technology.value, args))
-            logging.info(f'{onto_pkg}:{comm_type}:{comm_technology} CONNECTOR was configured successfully;')
         self.data = data
 
     def serialize_business_models(self):
@@ -75,12 +68,9 @@ class Ontology:
         for ec in self.g.query(GET_EXTERNAL_CODE_FOR_BM_QUERY):
             bm_name = self.g.qname(ec[0])
             required_metadata = self._verify_metadata(GET_REQUIRED_MD_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
-            results_metadata = self._verify_metadata(GET_RESULTS_MD_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
             for module in str(ec[3]).split(","): ensure_package_installed(module)
             BMs[bm_name] = BusinessModel(name=bm_name.split(":")[-1],
-                               communications={pkg_name: pkg_data["CommTechnology"] for pkg_name, pkg_data in self.data.items()},
                                requiresMetadata=required_metadata,
-                               resultsMetadata=results_metadata,
                                externalCode=ExternalCode(
                                     pythonFile=str(ec[2]),
                                     function=str(ec[4]),

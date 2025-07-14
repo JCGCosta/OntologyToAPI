@@ -63,15 +63,6 @@ async def EqualProsumerBidding(data):
     final_df = pd.concat([producers, consumers, neutrals], ignore_index=True)
     final_df['Billing'] = final_df['Billing'].round(4)
 
-    inserted_id = await data['conn']['epbbm'][0].exec_insert(
-        f"INSERT INTO lem_results (UTC_T, LEM_TOTAL_PRODUCED, LEM_TOTAL_CONSUMED) VALUES "
-        f"(\"{earliest_timestamp}\", \"{round(total_produced, 4)}\", \"{round(total_consumed, 4)}\");")
-
-    for index, row in final_df.iterrows():
-        await data['conn']['epbbm'][0].exec_insert(
-            f"INSERT INTO lem_billing (RESULTS_ID, MEMBER_ID, BILL) VALUES "
-            f"(\"{inserted_id}\", \"{row['Member_ID']}\", \"{row['Billing']}\");")
-
     return {
         "UTC_T": earliest_timestamp,
         "Community_Total_Produced": round(total_produced, 4),

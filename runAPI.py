@@ -12,9 +12,9 @@ if __name__ == "__main__":
     APIGen.load_ontologies(paths=[
         "Samples/WeatherMonitoring_UseCase/RealizationOntologies/SmartLEM-Weather_LEM.ttl"
     ])
-    # APIGen.load_ontologies(paths=[
-    #     "Samples/WeatherMonitoring_UseCase/RealizationOntologies/SmartLEM-WeatherBusinessModel.ttl"
-    # ])
+    APIGen.load_ontologies(paths=[
+        "Samples/WeatherMonitoring_UseCase/RealizationOntologies/SmartLEM-WeatherBusinessModel.ttl"
+    ])
     APIGen.serialize_ontologies()
     api_app = APIGen.generate_api_routes()
     uvicorn.run(api_app, host="127.0.0.1", port=5000)
