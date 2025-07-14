@@ -1,0 +1,148 @@
+@prefix : <http://www.cedri.com/SmartLEM-WeatherMonitoringBM#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wmbm: <http://www.cedri.com/SmartLEM-WeatherMonitoringBM#> .
+@base <http://www.cedri.com/SmartLEM-WeatherMonitoringBM> .
+
+<http://www.cedri.com/SmartLEM-WeatherMonitoringBM> rdf:type owl:Ontology ;
+                                                     owl:versionIRI <http://www.cedri.com/SmartLEM-WeatherMonitoringBM/1.0.0> ;
+                                                     owl:imports <http://www.cedri.com/SmartLEM-BusinessModel/1.0.0> ,
+                                                                 <http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase/1.0.0> ;
+                                                     <http://purl.org/dc/terms/creator> "https://orcid.org/0000-0002-7620-0960" ;
+                                                     <http://purl.org/dc/terms/description> "This ontology represent the concepts for the Weather Monitoring business model useful for a Peer-to-Peer Electricity Market context." ;
+                                                     <http://purl.org/dc/terms/issued> "2025-07-10" ;
+                                                     <http://purl.org/dc/terms/modified> "2025-07-10" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#RelativeHumidity
+wmbm:RelativeHumidity rdf:type owl:Class ;
+                      rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                      rdfs:comment "This class represent the Relative Humidy in reponse to a request made to the weatherAPI with the Latitude and Longitude parameters." .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#Temperature
+wmbm:Temperature rdf:type owl:Class ;
+                 rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                 rdfs:comment "This class represent the Temperature in reponse to a request made to the weatherAPI with the Latitude and Longitude parameters." .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#WeatherMonitoring
+wmbm:WeatherMonitoring rdf:type owl:Class ;
+                       rdfs:subClassOf <http://www.cedri.com/SmartLEM-BusinessModel#BusinessModel> ;
+                       rdfs:comment "This business model allows the access to an external API around Weather information." .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#APICommunication_R
+wmbm:APICommunication_R rdf:type owl:NamedIndividual ,
+                                 <http://www.cedri.com/SmartLEM-Communications#APICommunication> ;
+                        <http://www.cedri.com/SmartLEM-Communications#hasRequestURL> "http://api.weatherapi.com/v1/current.json" ;
+                        <http://www.cedri.com/SmartLEM-Communications#usesTechnology> "API" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#AggregatedResults_R
+wmbm:AggregatedResults_R rdf:type owl:NamedIndividual ,
+                                  <http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#Aggregated> ;
+                         <http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology> wmbm:ResultsDatabaseCommunication_R ;
+                         <http://www.cedri.com/SmartLEM-Metadata#hasSource> wmbm:AggregatedResults_S ;
+                         <http://www.cedri.com/SmartLEM-Metadata#hasType> "dict" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#AggregatedResults_S
+wmbm:AggregatedResults_S rdf:type owl:NamedIndividual ,
+                                  <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                         <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "Retrieves all data from the API call." ;
+                         <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT * FROM WEATHER_RESULTS;" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#BM_UpperMetadata
+wmbm:BM_UpperMetadata rdf:type owl:NamedIndividual ,
+                               <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                      <http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology> wmbm:APICommunication_R .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#RelativeHumidity_R
+wmbm:RelativeHumidity_R rdf:type owl:NamedIndividual ,
+                                 wmbm:RelativeHumidity ;
+                        <http://www.cedri.com/SmartLEM-Metadata#hasSource> wmbm:RelativeHumidity_S ;
+                        <http://www.cedri.com/SmartLEM-Metadata#hasType> "float" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#RelativeHumidity_S
+wmbm:RelativeHumidity_S rdf:type owl:NamedIndividual ,
+                                 <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                        <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "Retrieves the RelativeHumidity resulted from the API call." ;
+                        <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT Relative_Humidity from WEATHER_RESULTS;" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#ResultsDatabaseCommunication_R
+wmbm:ResultsDatabaseCommunication_R rdf:type owl:NamedIndividual ,
+                                             <http://www.cedri.com/SmartLEM-Communications#DatabaseCommunication> ;
+                                    <http://www.cedri.com/SmartLEM-Communications#hasConnectionString> "mysql+aiomysql://root:test@127.0.0.1:3306/weather_res" ;
+                                    <http://www.cedri.com/SmartLEM-Communications#usesTechnology> "MYSQL" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#Temperature_R
+wmbm:Temperature_R rdf:type owl:NamedIndividual ,
+                            wmbm:Temperature ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasSource> wmbm:Temperature_S ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasType> "float" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#Temperature_S
+wmbm:Temperature_S rdf:type owl:NamedIndividual ,
+                            <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "Retrieves the Temperature resulted from the API call." ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "SELECT Temperature from WEATHER_RESULTS;" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#WeatherMonitoring.py
+wmbm:WeatherMonitoring.py rdf:type owl:NamedIndividual ,
+                                   <http://www.cedri.com/SmartLEM-ExternalCode#ExternalCode> ;
+                          <http://www.cedri.com/SmartLEM-ExternalCode#hasFunction> "WeatherMonitoring" ;
+                          <http://www.cedri.com/SmartLEM-ExternalCode#hasPythonFile> "C:\\1_Arquivos\\3_Universidades\\IPB\\3_Investigacao\\SMARTLEM\\Implementations\\OntologyToAPI\\Samples\\BusinessModels\\WeatherMonitoring.py" ;
+                          <http://www.cedri.com/SmartLEM-ExternalCode#requiresLib> "requests" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoringBM#WeatherMonitoringBM
+wmbm:WeatherMonitoringBM rdf:type owl:NamedIndividual ,
+                                  wmbm:WeatherMonitoring ;
+                         <http://www.cedri.com/SmartLEM-BusinessModel#hasExternalCode> wmbm:WeatherMonitoring.py ;
+                         <http://www.cedri.com/SmartLEM-BusinessModel#requiresMetadata> <http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#LEMLatitude_R> ,
+                                                                                        <http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#LEMLongitude_R> ,
+                                                                                        <http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#TimestampStep_R> ;
+                         <http://www.cedri.com/SmartLEM-BusinessModel#resultsMetadata> wmbm:AggregatedResults_R ,
+                                                                                       wmbm:RelativeHumidity_R ,
+                                                                                       wmbm:Temperature_R .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase/1.0.0" uri="SmartLEM-Weather_LEM.ttl"/>
+    <uri id="Imports Wizard Entry" name="http://www.cedri.com/SmartLEM-BusinessModel/1.0.0" uri="file:/C:/1_Arquivos/3_Universidades/IPB/3_Investigacao/SMARTLEM/Implementations/OntologyToAPI/Ontologies/2%20Smart-LEM%20Ontologies/SmartLEM-BusinessModel.ttl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
+</catalog>

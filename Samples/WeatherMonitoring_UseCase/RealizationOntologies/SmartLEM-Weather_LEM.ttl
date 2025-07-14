@@ -1,0 +1,139 @@
+@prefix : <http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wmuc: <http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#> .
+@base <http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase> .
+
+<http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase> rdf:type owl:Ontology ;
+                                                           owl:versionIRI <http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase/1.0.0> ;
+                                                           owl:imports <http://www.cedri.com/SmartLEM-Metadata/1.0.0> ;
+                                                           <http://purl.org/dc/terms/creator> "https://orcid.org/0000-0002-7620-0960" ;
+                                                           <http://purl.org/dc/terms/description> "This ontology represent the concepts for the Weather Monitoring use case metadata useful for a Peer-to-Peer Electricity Market context." ;
+                                                           <http://purl.org/dc/terms/issued> "2025-07-10" ;
+                                                           <http://purl.org/dc/terms/modified> "2025-07-10" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#Aggregated
+wmuc:Aggregated rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                rdfs:comment "The aggregated source of data" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#LEMLatitude
+wmuc:LEMLatitude rdf:type owl:Class ;
+                 rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                 rdfs:comment "The Latitude coordenate of a Local Electricity Market" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#LEMLongitude
+wmuc:LEMLongitude rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                  rdfs:comment "The Longitude coordenate of a Local Electricity Market" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#TimestampStep
+wmuc:TimestampStep rdf:type owl:Class ;
+                   rdfs:subClassOf <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                   rdfs:comment "The amount of time between request to the WeatherAPI" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#Aggregated_R
+wmuc:Aggregated_R rdf:type owl:NamedIndividual ,
+                           wmuc:Aggregated ;
+                  <http://www.cedri.com/SmartLEM-Metadata#hasSource> wmuc:Aggregated_S ;
+                  <http://www.cedri.com/SmartLEM-Metadata#hasType> "dict" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#Aggregated_S
+wmuc:Aggregated_S rdf:type owl:NamedIndividual ,
+                           <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                  <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "The aggregated metadata source for the weather monitoring business model." ;
+                  <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "LEMData.{}" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#DatabaseCommunication_R
+wmuc:DatabaseCommunication_R rdf:type owl:NamedIndividual ,
+                                      <http://www.cedri.com/SmartLEM-Communications#DatabaseCommunication> ;
+                             <http://www.cedri.com/SmartLEM-Communications#hasConnectionString> "mongodb://localhost:27017/SmartLEM" ;
+                             <http://www.cedri.com/SmartLEM-Communications#usesTechnology> "MONGODB" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#LEMLatitude_R
+wmuc:LEMLatitude_R rdf:type owl:NamedIndividual ,
+                            wmuc:LEMLatitude ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasSource> wmuc:LEMLatitude_S ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasType> "float" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#LEMLatitude_S
+wmuc:LEMLatitude_S rdf:type owl:NamedIndividual ,
+                            <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "Retrives the LEM Latitude." ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "LEMData.{ \"LEMLatitude\": 1, \"_id\": 0}" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#LEMLongitude_R
+wmuc:LEMLongitude_R rdf:type owl:NamedIndividual ,
+                             wmuc:LEMLongitude ;
+                    <http://www.cedri.com/SmartLEM-Metadata#hasSource> wmuc:LEMLongitude_S ;
+                    <http://www.cedri.com/SmartLEM-Metadata#hasType> "float" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#LEMLongitude_S
+wmuc:LEMLongitude_S rdf:type owl:NamedIndividual ,
+                             <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                    <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "Retrives the LEM Longitude." ;
+                    <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "LEMData.{ \"LEMLongitude\": 1, \"_id\": 0 }" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#TimestampStep_R
+wmuc:TimestampStep_R rdf:type owl:NamedIndividual ,
+                              wmuc:TimestampStep ;
+                     <http://www.cedri.com/SmartLEM-Metadata#hasSource> wmuc:TimestampStep_S ;
+                     <http://www.cedri.com/SmartLEM-Metadata#hasType> "timestamp" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#TimestampStep_S
+wmuc:TimestampStep_S rdf:type owl:NamedIndividual ,
+                              <http://www.cedri.com/SmartLEM-Metadata#Source> ;
+                     <http://www.cedri.com/SmartLEM-Metadata#hasDescription> "Retrives the TimestampStep." ;
+                     <http://www.cedri.com/SmartLEM-Metadata#hasQuery> "LEMData.{ \"TimestampStep\": 1, \"_id\": 0 }" .
+
+
+###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#UpperMetadata
+wmuc:UpperMetadata rdf:type owl:NamedIndividual ,
+                            <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
+                   <http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology> wmuc:DatabaseCommunication_R .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
