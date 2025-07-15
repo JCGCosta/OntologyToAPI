@@ -2,7 +2,7 @@ import uvicorn
 from Generator.APIGenerator import Generator
 
 if __name__ == "__main__":
-    APIGen = Generator(showLogs=False)
+    APIGen = Generator(showLogs=True)
     APIGen.load_ontologies(paths=[
         "Samples/PB_UseCase/RealizationOntologies/SmartLEM-PB_LEM.ttl"
     ])
