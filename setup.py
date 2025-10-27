@@ -11,7 +11,7 @@ classifiers = [
 ]
 
 setup(
-    name='OntologyToAPI',
+    name='ontologytoapi',
     version='0.0.1',
     description='Multi purpose API Generator based on an Ontology Framework.',
     long_description=
