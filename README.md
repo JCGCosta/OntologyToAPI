@@ -5,6 +5,9 @@
 > specified in Turtle (.ttl), Resource Description Framework (.rdf)
 > and Web Ontology Language (.owl).
 
+> [![Publish to PyPI and TestPyPI](https://github.com/JCGCosta/OntologyToAPI/actions/workflows/python-publish.yml/badge.svg)](https://github.com/JCGCosta/OntologyToAPI/actions/workflows/python-publish.yml)
+
+
 ## Ontological Framework:
 
 - The following classes, relationships and data properties serve as a semantic blueprint for both metadata and business models.
