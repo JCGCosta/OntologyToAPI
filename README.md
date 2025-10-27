@@ -37,7 +37,7 @@ pip install ontologytoapi
 
 ```python
 import uvicorn
-from OntologyToAPI.core import APIGenerator
+from OntologyToAPI.core.APIGenerator import APIGenerator
 
 if __name__ == "__main__":
     APIGen = APIGenerator(showLogs=True)
