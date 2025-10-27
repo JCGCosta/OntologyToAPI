@@ -1,5 +1,5 @@
 from rdflib import Graph, URIRef
-import logging
+import logging, os
 import pprint
 
 logging.getLogger("rdflib").setLevel(logging.ERROR)
@@ -67,11 +67,16 @@ class Ontology:
             required_metadata = self._verify_metadata(GET_REQUIRED_MD_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
             required_parameters = self.g.query(GET_REQUIRED_PARAMETERS_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
             for module in str(ec[3]).split(","): ensure_package_installed(module)
+            func_path = str(ec[2])
+            if func_path.split("\\")[0] == "auto":
+                func_path = os.getcwd() + "\\" + "\\".join(func_path.split('\\')[1:])
+            if not os.path.exists(func_path):
+                raise FileNotFoundError(f"The external code file for the {bm_name} business model could not be found at \"{func_path}\"")
             BMs[bm_name] = BusinessModel(name=bm_name.split(":")[-1],
                                requiresMetadata=required_metadata,
                                requiresParameters={str(l): t for _, l, t in required_parameters},
                                externalCode=ExternalCode(
-                                    pythonFile=str(ec[2]),
+                                    pythonFile=func_path,
                                     function=str(ec[4]),
                                     requiresLib=str(ec[3]).split(",")))
             logging.info(f'{bm_name} BUSINESS MODEL serialized successfully;')

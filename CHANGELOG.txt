@@ -1,8 +1,9 @@
 Change Log
 ===============
-VERSION="0.0.10"
+VERSION="0.0.11"
 LAST_UPDATE="27/10/2025"
 ------------------
 FIRST RELEASE
-- Fixing connectors pathing issues
+- Added "auto" functionality to path in the business model definition.
+- Added validation in the MongoDB connector to ensure the right connection string.
 ------------------

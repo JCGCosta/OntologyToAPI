@@ -5,7 +5,10 @@ import json, logging
 class MongoDBConnection:
     def __init__(self, args):
         connString = args["hasConnectionString"].split('/')
-        self.client = AsyncMongoClient("/".join(connString[:-1]))
+        try:
+            self.client = AsyncMongoClient("/".join(connString[:-1]))
+        except:
+            raise(Exception("Could not connect to MongoDB with the provided connection string"))
         self.db = self.client[connString[-1]]
 
     async def exec_query(self, collection_query: str):

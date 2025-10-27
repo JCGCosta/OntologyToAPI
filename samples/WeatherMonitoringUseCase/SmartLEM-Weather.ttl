@@ -109,7 +109,7 @@ wmuc:Aggregated_S rdf:type owl:NamedIndividual ,
 ###  http://www.cedri.com/SmartLEM-WeatherMonitoring-UseCase#DatabaseCommunication_R
 wmuc:DatabaseCommunication_R rdf:type owl:NamedIndividual ,
                                       <http://www.cedri.com/SmartLEM-Communications#DatabaseCommunication> ;
-                             <http://www.cedri.com/SmartLEM-Communications#hasConnectionString> "mongodb://<address>:<port>/<collection>" ;
+                             <http://www.cedri.com/SmartLEM-Communications#hasConnectionString> "mongodb://<ipaddress>:<port>/<collection>" ;
                              <http://www.cedri.com/SmartLEM-Communications#usesTechnology> "MONGODB" .
 
 
