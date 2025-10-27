@@ -1,0 +1,7 @@
+Change Log
+===============
+0.0.1 (27/10/2025)
+------------------
+FIRST RELEASE
+- Initial release of the project.
+------------------
