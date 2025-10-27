@@ -4,7 +4,6 @@ classifiers = [
     'Development Status :: 3 - Alpha',
     'Intended Audience :: Developers',
     'Operating System :: Microsoft :: Windows :: Windows 11',
-    'Operating System :: Linux :: Windows :: Windows 11',
     'License :: OSI Approved :: MIT License',
     'Topic :: Software Development :: Libraries :: Python Modules',
     'Programming Language :: Python :: 3.11'
