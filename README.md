@@ -9,7 +9,7 @@
 
 - The following classes, relationships and data properties serve as a semantic blueprint for both metadata and business models.
 
-<img src="https://github.com/JCGCosta/OntologyToAPI/blob/main/OntologicalFramework.jpg?raw=true" alt="AbstractOntologyClasses" title="Abstract Ontology Classes.">
+<img src="https://github.com/JCGCosta/OntologyToAPI/blob/master/OntologicalFramework.jpg?raw=true" alt="AbstractOntologyClasses" title="Abstract Ontology Classes.">
 
 The ontological framework is composed of two main modules:
 
