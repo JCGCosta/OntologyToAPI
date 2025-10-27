@@ -1,2 +1,2 @@
 # Package
-from core import *
+from OntologyToAPI.core import *
