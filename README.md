@@ -30,7 +30,6 @@ The ontological framework is composed of two main modules:
 pip install ontologytoapi
 ```
 
-
 ### Step 2: Running
 
 - If you want to see a quick ontology sample in .ttl please access the following link: https://github.com/JCGCosta/OntologyToAPI/tree/master/samples
@@ -38,10 +37,10 @@ pip install ontologytoapi
 
 ```python
 import uvicorn
-from core.APIGenerator import Generator
+from OntologyToAPI.core import APIGenerator
 
 if __name__ == "__main__":
-    APIGen = Generator(showLogs=True)
+    APIGen = APIGenerator(showLogs=True)
     APIGen.load_ontologies(paths=[
         "Your/Metadata/Ontology/.ttl.owl.rdf"
     ])

@@ -1,4 +1,4 @@
-from core.DTO.Source import Source
+from OntologyToAPI.core.DTO.Source import Source
 
 from pydantic import BaseModel
 

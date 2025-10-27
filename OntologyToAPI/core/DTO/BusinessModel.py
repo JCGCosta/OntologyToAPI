@@ -1,5 +1,5 @@
-from core.DTO.Metadata import Metadata
-from core.DTO.ExternalCode import ExternalCode
+from OntologyToAPI.core.DTO.Metadata import Metadata
+from OntologyToAPI.core.DTO.ExternalCode import ExternalCode
 
 from typing import List, Optional
 from pydantic import BaseModel

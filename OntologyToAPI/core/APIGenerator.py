@@ -7,8 +7,8 @@ from inspect import Signature, Parameter
 from Settings import auto_config as cfg
 from datetime import date
 
-from core.Utility import *
-from core.Ontology import Ontology
+from OntologyToAPI.core.Utility import *
+from OntologyToAPI.core.Ontology import Ontology
 
 UPLOAD_DIR = Path(cfg.UPLOAD_DIR)
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)

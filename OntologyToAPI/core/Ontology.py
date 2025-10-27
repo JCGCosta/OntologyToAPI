@@ -4,12 +4,12 @@ import pprint
 
 logging.getLogger("rdflib").setLevel(logging.ERROR)
 
-from core.Queries import *
-from core.DTO.Source import *
-from core.DTO.BusinessModel import *
+from OntologyToAPI.core.Queries import *
+from OntologyToAPI.core.DTO.Source import *
+from OntologyToAPI.core.DTO.BusinessModel import *
 
-from core.Connectors.IndentifyConnector import identifyConnector
-from core.Utility import ensure_package_installed
+from OntologyToAPI.core.Connectors.IndentifyConnector import identifyConnector
+from OntologyToAPI.core.Utility import ensure_package_installed
 
 class Ontology:
     def __init__(self):

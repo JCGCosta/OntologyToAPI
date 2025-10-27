@@ -1,9 +1,7 @@
 Change Log
 ===============
-0.0.5 (27/10/2025)
+0.0.6 (27/10/2025)
 ------------------
 FIRST RELEASE
-- First fixes on README file.
-- Added Ontological Framework diagram.
-- Added ontology concrete sample.
+- Fixing pathing issues
 ------------------

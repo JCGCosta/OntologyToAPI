@@ -1,7 +1,7 @@
-from core.Connectors.Stateful.SocketConnection import SocketConnection
-from core.Connectors.Stateless.APIConnection import APIConnection
-from core.Connectors.Stateless.MYSQLConnection import MySQLConnection
-from core.Connectors.Stateless.MongoDBConnection import MongoDBConnection
+from OntologyToAPI.core.Connectors.Stateful.SocketConnection import SocketConnection
+from OntologyToAPI.core.Connectors.Stateless.APIConnection import APIConnection
+from OntologyToAPI.core.Connectors.Stateless.MYSQLConnection import MySQLConnection
+from OntologyToAPI.core.Connectors.Stateless.MongoDBConnection import MongoDBConnection
 
 SUPPORTED_CONNECTIONS = {
     "API": APIConnection,
