@@ -1,5 +1,9 @@
 from setuptools import setup, find_packages
 
+with open("CHANGELOG.txt", "r", encoding="utf-8") as f:
+    cl = f.read()
+    VERSION = cl.split("\"")[1]
+
 classifiers = [
     'Development Status :: 3 - Alpha',
     'Intended Audience :: Developers',
@@ -11,7 +15,7 @@ classifiers = [
 
 setup(
     name='ontologytoapi',
-    version='0.0.7',
+    version=VERSION,
     description='Multi purpose API Generator based on an Ontology Framework.',
     long_description=
     f"{open('README.md').read()}\n\n" +
