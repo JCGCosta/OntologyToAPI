@@ -1,6 +1,6 @@
 Change Log
 ===============
-0.0.3 (27/10/2025)
+0.0.4 (27/10/2025)
 ------------------
 FIRST RELEASE
 - First fixes on README file.

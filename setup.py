@@ -11,7 +11,7 @@ classifiers = [
 
 setup(
     name='ontologytoapi',
-    version='0.0.3',
+    version='0.0.4',
     description='Multi purpose API Generator based on an Ontology Framework.',
     long_description=
     f"{open('README.md').read()}\n\n" +
