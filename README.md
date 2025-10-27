@@ -9,42 +9,28 @@
 
 - The following classes, relationships and data properties serve as a semantic blueprint for both metadata and business models.
 
-<img src="https://github.com/JCGCosta/OntologyToAPI/blob/main/Ontologies/2%20Smart-LEM%20Ontologies/Ontology%20Abstract%20Modules.jpg?raw=true" alt="AbstractOntologyClasses" title="Abstract Ontology Classes.">
+<img src="https://github.com/JCGCosta/OntologyToAPI/blob/main/OntologicalFramework.jpg?raw=true" alt="AbstractOntologyClasses" title="Abstract Ontology Classes.">
 
-## Installation and Running:
+The ontological framework is composed of two main modules:
 
-### Step 1: Prerequisites
+  - **Metadata Ontology Module:** This module defines the essential classes and properties required to describe the metadata and its sources (e.g. Query to be executed on the CommunicationTechnology).
+  - **BusinessModel Ontology Module:** This module captures the specific business logic and rules governing some operation, it requires an ExternalCode concretization, and it can require any metadata or parameter (To be sent in the API request).
+  - **ExternalCode Ontology Module:** This module has all the technical details to connect to an external code, it also adds the possibility to dynamically require python packages.
+  - **Communications Ontology Module:** This module describes the communication technologies that can be used to fetch the data of some metadata in multiple forms (e. g).
 
-- Make sure you have Python installed on your system. You can download Python from the official website: [Python Downloads](https://www.python.org/downloads/).
+> From now on you must be ready to go and create your own ontological specification importing the Ontology Modules and extending it. You can do this by using the Protégé ontology editor (https://protege.stanford.edu/). Or if you prefer you can use any text editor to create your ontology files in the supported formats (.ttl, .rdf, .owl).
 
-### Step 2: Creating a Virtual Environment (Jump to Step 3 if you already have one)
-
-```bash
-# Navigate to the directory where you want to use the package
-cd repository/directory/path
-
-# Create a virtual environment named 'venv'
-python -m venv venv
-
-# Activate the virtual environment (If you are on Windows)
-.\venv\Scripts\activate
-
-# Activate the virtual environment (If you are on Linux)
-source venv/bin/activate
-```
-
-### Step 2: Installing the Package
+### Step 1: Installing the Package
 
 ```bash
 # Now inside the environment install the python package
-pip install OntologyToAPI
+pip install ontologytoapi
 ```
 
-> From now on you must be ready to go and create your own ontological specification importing the Ontology Modules and extending it
 
-### Step 4: Running
+### Step 2: Running
 
-- To make your own ontological specification for this framework, please see the following documentations: TODO
+- If you want to see a quick ontology sample in .ttl please access the following link: https://github.com/JCGCosta/OntologyToAPI/tree/master/samples
 - With you metadata and business models ontologies implemented you can generate your API by having the following python file as an entry point:
 
 ```python
@@ -58,30 +44,6 @@ if __name__ == "__main__":
     ])
     APIGen.load_ontologies(paths=[
         "Your/BusinessModel/Ontology/.ttl.owl.rdf"
-    ])
-    APIGen.serialize_ontologies()
-    api_app = APIGen.generate_api_routes()
-    uvicorn.run(api_app, host="127.0.0.1", port=5000)
-```
-
-```python
-import uvicorn
-from core.APIGenerator import Generator
-
-if __name__ == "__main__":
-    APIGen = Generator(showLogs=True)
-    # APIGen.load_ontologies(paths=[
-    #     "Samples/PB_UseCase/RealizationOntologies/SmartLEM-PB_LEM.ttl",
-    #     "Samples/PB_UseCase/RealizationOntologies/SmartLEM-EqualProsumerBiddingBusinessModel.ttl"
-    # ])
-    # APIGen.load_ontologies(paths=[
-    #     "Samples/WeatherMonitoring_UseCase/RealizationOntologies/SmartLEM-Weather_LEM.ttl",
-    #     "Samples/WeatherMonitoring_UseCase/RealizationOntologies/SmartLEM-WeatherBusinessModel.ttl"
-    # ])
-    APIGen.load_ontologies(paths=[
-        "Samples/ASE_UseCase/RealizationOntologies/SmartLEM_LEMMembers.ttl",
-        "Samples/ASE_UseCase/RealizationOntologies/SmartLEM_WeatherFromData.ttl",
-        "Samples/ASE_UseCase/RealizationOntologies/SmartLEM-BusinessModels.ttl"
     ])
     APIGen.serialize_ontologies()
     api_app = APIGen.generate_api_routes()
