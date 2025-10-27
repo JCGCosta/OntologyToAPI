@@ -12,7 +12,7 @@ classifiers = [
 
 setup(
     name='ontologytoapi',
-    version='0.0.1',
+    version='0.0.2',
     description='Multi purpose API Generator based on an Ontology Framework.',
     long_description=
     f"{open('README.md').read()}\n\n" +
