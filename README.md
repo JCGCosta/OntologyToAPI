@@ -26,14 +26,13 @@ The ontological framework is composed of two main modules:
 ### Step 1: Installing the Package
 
 ```bash
-# Now inside the environment install the python package
-pip install ontologytoapi
+pip install -U ontologytoapi
 ```
 
 ### Step 2: Running
 
-- If you want to see a quick ontology sample in .ttl please access the following link: https://github.com/JCGCosta/OntologyToAPI/tree/master/samples
-- With you metadata and business models ontologies implemented you can generate your API by having the following python file as an entry point:
+- If you want to do a quick test we provided some .ttl samples at the following repository: https://github.com/JCGCosta/OntologyToAPISamples
+- With your metadata and business models ontologies implemented you can generate your API by having the following python file as an entry point:
 
 ```python
 import uvicorn
