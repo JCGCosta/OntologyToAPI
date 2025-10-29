@@ -14,14 +14,14 @@
 
 <img src="https://github.com/JCGCosta/OntologyToAPI/blob/master/OntologicalFramework.jpg?raw=true" alt="AbstractOntologyClasses" title="Abstract Ontology Classes.">
 
-The ontological framework is composed of two main modules:
+The ontological framework is composed of four main modules:
 
   - **Metadata Ontology Module:** This module defines the essential classes and properties required to describe the metadata and its sources (e.g. Query to be executed on the CommunicationTechnology).
   - **BusinessModel Ontology Module:** This module captures the specific business logic and rules governing some operation, it requires an ExternalCode concretization, and it can require any metadata or parameter (To be sent in the API request).
   - **ExternalCode Ontology Module:** This module has all the technical details to connect to an external code, it also adds the possibility to dynamically require python packages.
   - **Communications Ontology Module:** This module describes the communication technologies that can be used to fetch the data of some metadata in multiple forms (e. g).
 
-> From now on you must be ready to go and create your own ontological specification importing the Ontology Modules and extending it. You can do this by using the Protégé ontology editor (https://protege.stanford.edu/). Or if you prefer you can use any text editor to create your ontology files in the supported formats (.ttl, .rdf, .owl).
+> From now on you must be ready to go and create your own ontological specification importing the [Ontology Modules](https://github.com/JCGCosta/OntologyToAPI/tree/master/OntologicalFramework) and extending it. You can do this by using the Protégé ontology editor (https://protege.stanford.edu/). Or if you prefer you can use any text editor to create your ontology files in the supported formats (.ttl, .rdf, .owl).
 
 ### Step 1: Installing the Package
 
