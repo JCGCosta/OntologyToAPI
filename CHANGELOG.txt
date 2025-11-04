@@ -1,8 +1,8 @@
 Change Log
 ===============
-VERSION="0.0.13"
-LAST_UPDATE="27/10/2025"
+VERSION="0.0.14"
+LAST_UPDATE="04/11/2025"
 ------------------
-FIRST RELEASE
-- README corrections
+- Correction with pathing issues for different operating systems.
+- Minor updates in error handling.
 ------------------

@@ -1,5 +1,6 @@
 from rdflib import Graph, URIRef
-import logging, os
+from pathlib import Path
+import logging
 import pprint
 
 logging.getLogger("rdflib").setLevel(logging.ERROR)
@@ -67,16 +68,16 @@ class Ontology:
             required_metadata = self._verify_metadata(GET_REQUIRED_MD_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
             required_parameters = self.g.query(GET_REQUIRED_PARAMETERS_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
             for module in str(ec[3]).split(","): ensure_package_installed(module)
-            func_path = str(ec[2])
-            if func_path.split("\\")[0] == "auto":
-                func_path = os.getcwd() + "\\" + "\\".join(func_path.split('\\')[1:])
-            if not os.path.exists(func_path):
-                raise FileNotFoundError(f"The external code file for the {bm_name} business model could not be found at \"{func_path}\"")
+            func_path = Path(str(ec[2])).expanduser()
+            if not func_path.is_absolute(): func_path = (Path.cwd() / func_path).resolve(strict=False)
+            else: func_path = func_path.resolve(strict=False)
+            if not func_path.exists() or not func_path.is_file():
+                raise FileNotFoundError(f'The external code file for the {bm_name} business model could not be found at "{func_path}"')
             BMs[bm_name] = BusinessModel(name=bm_name.split(":")[-1],
                                requiresMetadata=required_metadata,
                                requiresParameters={str(l): t for _, l, t in required_parameters},
                                externalCode=ExternalCode(
-                                    pythonFile=func_path,
+                                    pythonFile=str(func_path),
                                     function=str(ec[4]),
                                     requiresLib=str(ec[3]).split(",")))
             logging.info(f'{bm_name} BUSINESS MODEL serialized successfully;')

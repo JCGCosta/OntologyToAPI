@@ -15,4 +15,4 @@ def identifyConnector(CommunicationTechnology, args):
         connector_class = SUPPORTED_CONNECTIONS[str(CommunicationTechnology)]
         return connector_class(args)
     except KeyError as e:
-        raise ValueError(f"Unsupported type or technology: {e}")
+        raise ValueError(f"Unsupported type or technology: {e} please check the Ontology.")
