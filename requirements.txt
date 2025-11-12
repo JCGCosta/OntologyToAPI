@@ -11,6 +11,7 @@ python-multipart~=0.0.20
 # Dependencies for async operations in specific databases
 
 asyncio~=4.0.0 # Core async library
+unqlite~=0.9.9 # UnQLite driver (The async version is included in the main package using asyncio)
 asyncpg~=0.27.0 # Async PostgreSQL driver
 aiomysql~=0.2.0 # Async MySQL driver
 aiosqlite~=0.21.0 # Async SQLite driver
