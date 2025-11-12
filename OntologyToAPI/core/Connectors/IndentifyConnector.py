@@ -2,12 +2,22 @@ from OntologyToAPI.core.Connectors.Stateful.SocketConnection import SocketConnec
 from OntologyToAPI.core.Connectors.Stateless.APIConnection import APIConnection
 from OntologyToAPI.core.Connectors.Stateless.MYSQLConnection import MySQLConnection
 from OntologyToAPI.core.Connectors.Stateless.MongoDBConnection import MongoDBConnection
+from OntologyToAPI.core.Connectors.Stateless.SQLITEConnection import SQLiteConnection
+from OntologyToAPI.core.Connectors.Stateless.POSTGRESQLConnection import PostgreSQLConnection
+from OntologyToAPI.core.Connectors.Stateless.UNQLITEConnection import UnQLiteConnection
 
 SUPPORTED_CONNECTIONS = {
     "API": APIConnection,
+    "SOCKET": SocketConnection,
+
+    # SQL Databases
     "MYSQL": MySQLConnection,
+    "SQLITE": SQLiteConnection,
+    "POSTGRESQL": PostgreSQLConnection,
+
+    # NoSQL Databases
     "MONGODB": MongoDBConnection,
-    "Socket": SocketConnection
+    "UNQLITE": UnQLiteConnection
 }
 
 def identifyConnector(CommunicationTechnology, args):

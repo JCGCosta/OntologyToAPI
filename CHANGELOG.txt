@@ -1,7 +1,10 @@
 Change Log
 ===============
-VERSION="0.0.15"
-LAST_UPDATE="11/11/2025"
+VERSION="0.0.16"
+LAST_UPDATE="12/11/2025"
 ------------------
-- Added the Async SQLite driver requirement
+- Readme updates
+- Added the Async SQLite driver
+- Added the Async Postgres driver
+- Added the Async UnqLite driver
 ------------------

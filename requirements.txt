@@ -10,6 +10,8 @@ python-multipart~=0.0.20
 
 # Dependencies for async operations in specific databases
 
+asyncio~=4.0.0 # Core async library
+asyncpg~=0.27.0 # Async PostgreSQL driver
 aiomysql~=0.2.0 # Async MySQL driver
 aiosqlite~=0.21.0 # Async SQLite driver
 motor~=3.7.1 # Async MongoDB driver

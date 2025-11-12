@@ -65,7 +65,7 @@ xsd:duration rdf:type rdfs:Datatype .
                            owl:InverseFunctionalProperty ;
                   rdfs:domain :BusinessModel ;
                   rdfs:range <http://www.cedri.com/SmartLEM-Metadata#Metadata> ;
-                  rdfs:comment "The metadata required to acheive some goal of a business model" .
+                  rdfs:comment "The metadata required to achieve some goal of a business model" .
 
 
 #################################################################
