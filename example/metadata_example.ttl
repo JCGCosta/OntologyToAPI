@@ -1,0 +1,47 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+@prefix md:  <http://www.cedri.com/OntologyToAPI-Metadata#> .
+@prefix comm:  <http://www.cedri.com/OntologyToAPI-Communications#> .
+
+@prefix ex:   <http://example.org/> .
+
+# Class Definitions
+
+ex:Temperature_C rdf:type owl:Class ;
+          rdfs:subClassOf md:Metadata ;
+          rdfs:comment "A measure of the average kinetic energy of the particles within a substance, which corresponds to its hotness or coldness." .
+
+ex:Relative_Humidity rdf:type owl:Class ;
+          rdfs:subClassOf md:Metadata ;
+          rdfs:comment "The ratio of the amount of water vapor currently in the air to the maximum amount the air could hold at that specific temperature, expressed as a percentage." .
+
+# Individuals for Metadata and Communication
+
+ex:SQLITE_DB rdf:type owl:NamedIndividual ,
+                      comm:DatabaseCommunication ;
+             comm:hasConnectionString "sqlite+aiosqlite:///example.db" ;
+             comm:usesTechnology "SQLITE" .
+
+ex:Temperature_C_Source rdf:type owl:NamedIndividual ,
+                      md:Source ;
+             md:hasCommunicationTechnology ex:SQLITE_DB ;
+             md:hasDescription "Retrieves the temperature data from a local SQLite database." ;
+             md:hasQuery "SELECT temperature_c FROM weather;" .
+
+ex:Temperature_C_MD rdf:type owl:NamedIndividual ,
+                           ex:Temperature_C ;
+                  md:hasSource ex:Temperature_C_Source ;
+                  md:hasType "float" .
+
+ex:Relative_Humidity_Source rdf:type owl:NamedIndividual ,
+                      md:Source ;
+             md:hasCommunicationTechnology ex:SQLITE_DB ;
+             md:hasDescription "Retrieves the relative humidity data from a local SQLite database." ;
+             md:hasQuery "SELECT r_humidity FROM weather;" .
+
+ex:Relative_Humidity_MD rdf:type owl:NamedIndividual ,
+                           ex:Relative_Humidity ;
+                  md:hasSource ex:Relative_Humidity_Source ;
+                  md:hasType "float" .

@@ -1,13 +1,13 @@
-@prefix : <http://www.cedri.com/SmartLEM-ExternalCode#> .
+@prefix : <http://www.cedri.com/OntologyToAPI-ExternalCode#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.cedri.com/SmartLEM-ExternalCode#> .
+@base <http://www.cedri.com/OntologyToAPI-ExternalCode#> .
 
-<http://www.cedri.com/SmartLEM-ExternalCode> rdf:type owl:Ontology ;
-                                              owl:versionIRI <http://www.cedri.com/SmartLEM-ExternalCode/1.0.0> ;
+<http://www.cedri.com/OntologyToAPI-ExternalCode> rdf:type owl:Ontology ;
+                                              owl:versionIRI <http://www.cedri.com/OntologyToAPI-ExternalCode/1.0.0> ;
                                               <http://purl.org/dc/terms/creator> "https://orcid.org/0000-0002-7620-0960" ;
                                               <http://purl.org/dc/terms/description> "This ontology represent the concepts as an interface to some external piece of code." ;
                                               <http://purl.org/dc/terms/issued> "2025-06-30" ;
@@ -45,7 +45,7 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Data properties
 #################################################################
 
-###  http://www.cedri.com/SmartLEM-ExternalCode#hasFunction
+###  http://www.cedri.com/OntologyToAPI-ExternalCode#hasFunction
 :hasFunction rdf:type owl:DatatypeProperty ,
                       owl:FunctionalProperty ;
              rdfs:domain :ExternalCode ;
@@ -53,7 +53,7 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:comment "a function name write in python" .
 
 
-###  http://www.cedri.com/SmartLEM-ExternalCode#hasPythonFile
+###  http://www.cedri.com/OntologyToAPI-ExternalCode#hasPythonFile
 :hasPythonFile rdf:type owl:DatatypeProperty ,
                         owl:FunctionalProperty ;
                rdfs:domain :ExternalCode ;
@@ -61,7 +61,7 @@ xsd:duration rdf:type rdfs:Datatype .
                rdfs:comment "the python file path of an external code" .
 
 
-###  http://www.cedri.com/SmartLEM-ExternalCode#requiresLib
+###  http://www.cedri.com/OntologyToAPI-ExternalCode#requiresLib
 :requiresLib rdf:type owl:DatatypeProperty ,
                       owl:FunctionalProperty ;
              rdfs:domain :ExternalCode ;
@@ -73,7 +73,7 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Classes
 #################################################################
 
-###  http://www.cedri.com/SmartLEM-ExternalCode#ExternalCode
+###  http://www.cedri.com/OntologyToAPI-ExternalCode#ExternalCode
 :ExternalCode rdf:type owl:Class ;
               rdfs:comment "is the literal representation of a external code within a system" .
 

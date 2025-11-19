@@ -1,14 +1,14 @@
-@prefix : <http://www.cedri.com/SmartLEM-Metadata#> .
+@prefix : <http://www.cedri.com/OntologyToAPI-Metadata#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.cedri.com/SmartLEM-Metadata#> .
+@base <http://www.cedri.com/OntologyToAPI-Metadata#> .
 
-<http://www.cedri.com/SmartLEM-Metadata> rdf:type owl:Ontology ;
-                                          owl:versionIRI <http://www.cedri.com/SmartLEM-Metadata/1.0.0> ;
-                                          owl:imports <http://www.cedri.com/SmartLEM-Communications/1.0.0> ;
+<http://www.cedri.com/OntologyToAPI-Metadata> rdf:type owl:Ontology ;
+                                          owl:versionIRI <http://www.cedri.com/OntologyToAPI-Metadata/1.0.0> ;
+                                          owl:imports <http://www.cedri.com/OntologyToAPI-Communications/1.0.0> ;
                                           <http://purl.org/dc/terms/creator> "https://orcid.org/0000-0002-7620-0960" ;
                                           <http://purl.org/dc/terms/description> "This ontology represent the metadata concepts from multiple data sources." ;
                                           <http://purl.org/dc/terms/issued> "2025-06-30" ;
@@ -46,15 +46,15 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
-###  http://www.cedri.com/SmartLEM-Metadata#hasCommunicationTechnology
+###  http://www.cedri.com/OntologyToAPI-Metadata#hasCommunicationTechnology
 :hasCommunicationTechnology rdf:type owl:ObjectProperty ,
                                      owl:FunctionalProperty ;
                             rdfs:domain :Source ;
-                            rdfs:range <http://www.cedri.com/SmartLEM-Communications/CommunicationTechnology> ;
+                            rdfs:range <http://www.cedri.com/OntologyToAPI-Communications/CommunicationTechnology> ;
                             rdfs:comment "The metadata utilizes a communication technology to be achievable" .
 
 
-###  http://www.cedri.com/SmartLEM-Metadata#hasSource
+###  http://www.cedri.com/OntologyToAPI-Metadata#hasSource
 :hasSource rdf:type owl:ObjectProperty ,
                     owl:FunctionalProperty ;
            rdfs:domain :Metadata ;
@@ -66,7 +66,7 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Data properties
 #################################################################
 
-###  http://www.cedri.com/SmartLEM-Metadata#hasDescription
+###  http://www.cedri.com/OntologyToAPI-Metadata#hasDescription
 :hasDescription rdf:type owl:DatatypeProperty ,
                          owl:FunctionalProperty ;
                 rdfs:domain :Source ;
@@ -74,7 +74,7 @@ xsd:duration rdf:type rdfs:Datatype .
                 rdfs:comment "the description of the purpose of a query from a specific source" .
 
 
-###  http://www.cedri.com/SmartLEM-Metadata#hasQuery
+###  http://www.cedri.com/OntologyToAPI-Metadata#hasQuery
 :hasQuery rdf:type owl:DatatypeProperty ,
                    owl:FunctionalProperty ;
           rdfs:domain :Source ;
@@ -82,7 +82,7 @@ xsd:duration rdf:type rdfs:Datatype .
           rdfs:comment "an query to retrieve the data from a given source" .
 
 
-###  http://www.cedri.com/SmartLEM-Metadata#hasType
+###  http://www.cedri.com/OntologyToAPI-Metadata#hasType
 :hasType rdf:type owl:DatatypeProperty ,
                   owl:FunctionalProperty ;
          rdfs:domain :Metadata ;
@@ -94,16 +94,16 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Classes
 #################################################################
 
-###  http://www.cedri.com/SmartLEM-Communications/CommunicationTechnology
-<http://www.cedri.com/SmartLEM-Communications/CommunicationTechnology> rdf:type owl:Class .
+###  http://www.cedri.com/OntologyToAPI-Communications/CommunicationTechnology
+<http://www.cedri.com/OntologyToAPI-Communications/CommunicationTechnology> rdf:type owl:Class .
 
 
-###  http://www.cedri.com/SmartLEM-Metadata#Metadata
+###  http://www.cedri.com/OntologyToAPI-Metadata#Metadata
 :Metadata rdf:type owl:Class ;
           rdfs:comment "The metadata of any kind of data" .
 
 
-###  http://www.cedri.com/SmartLEM-Metadata#Source
+###  http://www.cedri.com/OntologyToAPI-Metadata#Source
 :Source rdf:type owl:Class ;
         rdfs:comment "The source of an given data" .
 

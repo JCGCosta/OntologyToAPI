@@ -1,3 +1,19 @@
 [build-system]
 # Defined by PEP 518:
-requires = ["setuptools","SQLAlchemy","pydantic","requests","pymongo","rdflib","fastapi","uvicorn","aiomysql","motor","aiofiles","python-multipart"]
+requires = [
+        "SQLAlchemy",
+        "pydantic",
+        "requests",
+        "pymongo",
+        "rdflib",
+        "fastapi",
+        "uvicorn",
+        "python-multipart",
+        "asyncio",
+        "unqlite",
+        "asyncpg",
+        "aiomysql",
+        "aiosqlite",
+        "motor",
+        "aiofiles"
+    ]

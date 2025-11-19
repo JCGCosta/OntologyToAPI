@@ -1,0 +1,35 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+@prefix md:  <http://www.cedri.com/OntologyToAPI-Metadata#> .
+@prefix comm:  <http://www.cedri.com/OntologyToAPI-Communications#> .
+@prefix bm:  <http://www.cedri.com/OntologyToAPI-BusinessModel#> .
+@prefix excode:  <http://www.cedri.com/OntologyToAPI-ExternalCode#> .
+
+@prefix ex:   <http://example.org/> .
+
+# Class Definitions
+
+ex:CelsiusToFahrenheit rdf:type owl:Class ;
+                       rdfs:subClassOf bm:BusinessModel ;
+                       rdfs:comment "This business model allows the convertion from Celsius to Fahrenheit." .
+
+# Individuals for Business Models
+
+ex:CelsiusToFahrenheit.py rdf:type owl:NamedIndividual ,
+                                   excode:ExternalCode ;
+                          excode:hasFunction "convert_temperature_c_to_f" ;
+                          excode:hasPythonFile "bm.py" ;
+                          excode:requiresLib "requests" .
+
+ex:Temperature_P rdf:type owl:NamedIndividual ,
+                          bm:Parameter ;
+                 bm:hasParameterLabel "temperature_c" ;
+                 bm:hasParameterType "float" .
+
+ex:CelsiusToFahrenheit_I rdf:type owl:NamedIndividual ,
+                                  ex:CelsiusToFahrenheit ;
+                         bm:requiresMetadata ex:Temperature_C_MD;
+                         bm:hasExternalCode ex:CelsiusToFahrenheit.py ;
+                         bm:hasParameter ex:Temperature_P .

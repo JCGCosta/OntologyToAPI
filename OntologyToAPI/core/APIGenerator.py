@@ -6,6 +6,7 @@ from pathlib import Path
 from inspect import Signature, Parameter
 from Settings import auto_config as cfg
 from datetime import date
+from types import SimpleNamespace
 
 from OntologyToAPI.core.Utility import *
 from OntologyToAPI.core.Ontology import Ontology
@@ -25,11 +26,11 @@ def create_metadata_handler(connector, query: str, name: str):
 
 def create_business_model_handler(required_metadata: list, requiresParameters:dict, external_function):
     async def handler(**kwargs):
-        aggregated_res = {"FromParameters": {**kwargs}, "FromMetadata": {}, "UPLOAD_DIR": UPLOAD_DIR}
+        aggregated_res = SimpleNamespace(params={**kwargs}, metadata={}, upload_dir=UPLOAD_DIR)
         for md in required_metadata:
             pkg, name = md.name.split(":")
             try:
-                aggregated_res["FromMetadata"][name] = await md.hasSource.comm_technology.exec_query(md.hasSource.query)
+                aggregated_res.metadata[name] = await md.hasSource.comm_technology.exec_query(md.hasSource.query)
             except Exception as e:
                 logging.exception(f"Error running query for {name}")
                 return {"error": str(e)}

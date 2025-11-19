@@ -1,14 +1,14 @@
-@prefix : <http://www.cedri.com/SmartLEM-Communications#> .
-@prefix ct: <http://www.cedri.com/SmartLEM-Communications/> .
+@prefix : <http://www.cedri.com/OntologyToAPI-Communications#> .
+@prefix ct: <http://www.cedri.com/OntologyToAPI-Communications/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.cedri.com/SmartLEM-Communications#> .
+@base <http://www.cedri.com/OntologyToAPI-Communications#> .
 
-<http://www.cedri.com/SmartLEM-Communications> rdf:type owl:Ontology ;
-                                                owl:versionIRI <http://www.cedri.com/SmartLEM-Communications/1.0.0> ;
+<http://www.cedri.com/OntologyToAPI-Communications> rdf:type owl:Ontology ;
+                                                owl:versionIRI <http://www.cedri.com/OntologyToAPI-Communications/1.0.0> ;
                                                 <http://purl.org/dc/terms/creator> "https://orcid.org/0000-0002-7620-0960" ;
                                                 <http://purl.org/dc/terms/description> "This ontology represent the communication concepts from multiple system." ;
                                                 <http://purl.org/dc/terms/issued> "2025-06-30" ;
@@ -46,7 +46,7 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Data properties
 #################################################################
 
-###  http://www.cedri.com/SmartLEM-Communications#hasConnectionString
+###  http://www.cedri.com/OntologyToAPI-Communications#hasConnectionString
 :hasConnectionString rdf:type owl:DatatypeProperty ,
                               owl:FunctionalProperty ;
                      rdfs:domain :DatabaseCommunication ;
@@ -54,7 +54,7 @@ xsd:duration rdf:type rdfs:Datatype .
                      rdfs:comment "connection string for databases (e.g., SQL and non-SQL databases)" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#hasEndpoint
+###  http://www.cedri.com/OntologyToAPI-Communications#hasEndpoint
 :hasEndpoint rdf:type owl:DatatypeProperty ,
                       owl:FunctionalProperty ;
              rdfs:domain :APICommunication ;
@@ -62,7 +62,7 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:comment "has a endpoint structure to request data" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#hasFileType
+###  http://www.cedri.com/OntologyToAPI-Communications#hasFileType
 :hasFileType rdf:type owl:DatatypeProperty ,
                       owl:FunctionalProperty ;
              rdfs:domain :FileBasedCommunication ;
@@ -70,7 +70,7 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:comment "has a file type (e.g., XLS, XLSX, CSV, JSON, etc)" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#hasIPAddress
+###  http://www.cedri.com/OntologyToAPI-Communications#hasIPAddress
 :hasIPAddress rdf:type owl:DatatypeProperty ,
                        owl:FunctionalProperty ;
               rdfs:domain ct:CommunicationTechnology ;
@@ -78,7 +78,7 @@ xsd:duration rdf:type rdfs:Datatype .
               rdfs:comment "the internet protocol address" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#hasPath
+###  http://www.cedri.com/OntologyToAPI-Communications#hasPath
 :hasPath rdf:type owl:DatatypeProperty ,
                   owl:FunctionalProperty ;
          rdfs:domain :FileBasedCommunication ;
@@ -86,7 +86,7 @@ xsd:duration rdf:type rdfs:Datatype .
          rdfs:comment "has a path for a specific file or directory" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#hasPort
+###  http://www.cedri.com/OntologyToAPI-Communications#hasPort
 :hasPort rdf:type owl:DatatypeProperty ,
                   owl:FunctionalProperty ;
          rdfs:domain ct:CommunicationTechnology ;
@@ -94,14 +94,14 @@ xsd:duration rdf:type rdfs:Datatype .
          rdfs:comment "has default port" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#hasQueryCall
+###  http://www.cedri.com/OntologyToAPI-Communications#hasQueryCall
 :hasQueryCall rdf:type owl:DatatypeProperty ;
               rdfs:domain :DatabaseCommunication ;
               rdfs:range xsd:string ;
               rdfs:comment "a generic query within any data storing technology to insert, retrieve or update information" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#hasQueueName
+###  http://www.cedri.com/OntologyToAPI-Communications#hasQueueName
 :hasQueueName rdf:type owl:DatatypeProperty ,
                        owl:FunctionalProperty ;
               rdfs:domain :MessageQueueCommunication ;
@@ -109,7 +109,7 @@ xsd:duration rdf:type rdfs:Datatype .
               rdfs:comment "has a pub/sub queue name" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#hasRequestURL
+###  http://www.cedri.com/OntologyToAPI-Communications#hasRequestURL
 :hasRequestURL rdf:type owl:DatatypeProperty ,
                         owl:FunctionalProperty ;
                rdfs:domain :APICommunication ;
@@ -117,14 +117,14 @@ xsd:duration rdf:type rdfs:Datatype .
                rdfs:comment "has a request URL mainly for an API call" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#hasResponseField
+###  http://www.cedri.com/OntologyToAPI-Communications#hasResponseField
 :hasResponseField rdf:type owl:DatatypeProperty ;
                   rdfs:domain :APICommunication ;
                   rdfs:range xsd:string ;
                   rdfs:comment "has a response field in the content of message from an API call" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#hasSecurityLevel
+###  http://www.cedri.com/OntologyToAPI-Communications#hasSecurityLevel
 :hasSecurityLevel rdf:type owl:DatatypeProperty ,
                            owl:FunctionalProperty ;
                   rdfs:domain ct:CommunicationTechnology ;
@@ -132,7 +132,7 @@ xsd:duration rdf:type rdfs:Datatype .
                   rdfs:comment "e.g., none, basic, TLS, end-to-end" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#isStateful
+###  http://www.cedri.com/OntologyToAPI-Communications#isStateful
 :isStateful rdf:type owl:DatatypeProperty ,
                      owl:FunctionalProperty ;
             rdfs:domain ct:CommunicationTechnology ;
@@ -140,7 +140,7 @@ xsd:duration rdf:type rdfs:Datatype .
             rdfs:comment "whether the communication maintains state (e.g., WebSockets = true, REST = false)." .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#usesMessageFormat
+###  http://www.cedri.com/OntologyToAPI-Communications#usesMessageFormat
 :usesMessageFormat rdf:type owl:DatatypeProperty ,
                             owl:FunctionalProperty ;
                    rdfs:domain ct:CommunicationTechnology ;
@@ -148,7 +148,7 @@ xsd:duration rdf:type rdfs:Datatype .
                    rdfs:comment "e.g., JSON, XML, Protobuf, Binary" .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#usesTechnology
+###  http://www.cedri.com/OntologyToAPI-Communications#usesTechnology
 :usesTechnology rdf:type owl:DatatypeProperty ,
                          owl:FunctionalProperty ;
                 rdfs:domain :DatabaseCommunication ;
@@ -160,55 +160,55 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Classes
 #################################################################
 
-###  http://www.cedri.com/SmartLEM-Communications#APICommunication
+###  http://www.cedri.com/OntologyToAPI-Communications#APICommunication
 :APICommunication rdf:type owl:Class ;
                   rdfs:subClassOf ct:CommunicationTechnology ;
                   rdfs:comment "A class representing API-based communication." .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#DatabaseCommunication
+###  http://www.cedri.com/OntologyToAPI-Communications#DatabaseCommunication
 :DatabaseCommunication rdf:type owl:Class ;
                        rdfs:subClassOf ct:CommunicationTechnology ;
                        rdfs:comment "A class representing communication with databases." .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#FileBasedCommunication
+###  http://www.cedri.com/OntologyToAPI-Communications#FileBasedCommunication
 :FileBasedCommunication rdf:type owl:Class ;
                         rdfs:subClassOf ct:CommunicationTechnology ;
                         rdfs:comment "A class representing communication through file systems." .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#MessageQueueCommunication
+###  http://www.cedri.com/OntologyToAPI-Communications#MessageQueueCommunication
 :MessageQueueCommunication rdf:type owl:Class ;
                            rdfs:subClassOf ct:CommunicationTechnology ;
                            rdfs:comment "A class representing message broker or queue-based communication." .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#RPCCommunication
+###  http://www.cedri.com/OntologyToAPI-Communications#RPCCommunication
 :RPCCommunication rdf:type owl:Class ;
                   rdfs:subClassOf ct:CommunicationTechnology ;
                   rdfs:comment "A class representing Remote Procedure Call-based communication." .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#ServiceMeshCommunication
+###  http://www.cedri.com/OntologyToAPI-Communications#ServiceMeshCommunication
 :ServiceMeshCommunication rdf:type owl:Class ;
                           rdfs:subClassOf ct:CommunicationTechnology ;
                           rdfs:comment "A class representing service mesh-based internal service communication." .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#SocketCommunication
+###  http://www.cedri.com/OntologyToAPI-Communications#SocketCommunication
 :SocketCommunication rdf:type owl:Class ;
                      rdfs:subClassOf ct:CommunicationTechnology ;
                      rdfs:comment "A class representing socket-based communication." .
 
 
-###  http://www.cedri.com/SmartLEM-Communications#WebSocketCommunication
+###  http://www.cedri.com/OntologyToAPI-Communications#WebSocketCommunication
 :WebSocketCommunication rdf:type owl:Class ;
                         rdfs:subClassOf ct:CommunicationTechnology ;
                         rdfs:comment "A class representing WebSocket communication." .
 
 
-###  http://www.cedri.com/SmartLEM-Communications/CommunicationTechnology
+###  http://www.cedri.com/OntologyToAPI-Communications/CommunicationTechnology
 ct:CommunicationTechnology rdf:type owl:Class ;
                            rdfs:comment "A class representing communication technology." .
 

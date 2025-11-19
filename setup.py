@@ -28,5 +28,21 @@ setup(
     classifiers=classifiers,
     keywords=['Ontology', 'API'],
     packages=find_packages(),
-    install_requires=["SQLAlchemy","pydantic","requests","pymongo","rdflib","fastapi","uvicorn","aiomysql","motor","aiofiles","python-multipart"]
+    install_requires=[
+        "SQLAlchemy",
+        "pydantic",
+        "requests",
+        "pymongo",
+        "rdflib",
+        "fastapi",
+        "uvicorn",
+        "python-multipart",
+        "asyncio",
+        "unqlite",
+        "asyncpg",
+        "aiomysql",
+        "aiosqlite",
+        "motor",
+        "aiofiles"
+    ]
 )

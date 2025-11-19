@@ -1,10 +1,28 @@
 Change Log
 ===============
-VERSION="0.0.16"
-LAST_UPDATE="12/11/2025"
+VERSION="0.0.17"
+LAST_UPDATE="18/11/2025"
 ------------------
-- Readme updates
-- Added the Async SQLite driver
-- Added the Async Postgres driver
-- Added the Async UnqLite driver
+- Readme updates, added a full example of using the package.
+- Fixed the required database driver packages in the setup file.
+- Improved the query handling for unqlite databases, to maintain a query style compatible with mongodb databases:
+  For instance, queries like the following are now supported in unqlite as well.
+    - collection.find({field: 1, id: 0}), will return documents like:
+        [
+            {field_name: <value>},
+            {field_name: <value>},
+            ...
+        ]
+    - collection.find({field: 1}), will return documents like:
+        [
+            {<doc_id>: <value>},
+            {<doc_id>: <value>},
+            ...
+        ]
+  This provides a more consistent experience across different noSQL databases into handle projections similar to mongoDB.
+- Corrections in the Ontology module prefixes and in the sparkQL queries to match the new ontology prefixes.
+- Changed the default named args from metadata and parameters from "FromMetadata" and "FromParameters" to "metadata" and "params" respectively.
+- Changed the data object sent to the BM function from a dictionary to a simple object with attributes, now data inside a BM is accessible by using:
+    data.metadata instead of data['metadata']
+    data.params instead of data['params']
 ------------------
