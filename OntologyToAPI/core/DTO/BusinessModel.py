@@ -6,6 +6,7 @@ from pydantic import BaseModel
 
 class BusinessModel(BaseModel):
     name: str
+    desc: str
     requiresMetadata: Optional[List[Metadata]]
     requiresParameters: Optional[dict]
     externalCode: Optional[ExternalCode]

@@ -103,7 +103,7 @@ ex:Relative_Humidity_MD rdf:type owl:NamedIndividual ,
 
 # Class Definitions
 
-ex:CelsiusToFahrenheit rdf:type owl:Class ;
+ex:CelsiusToFahrenheitBM rdf:type owl:Class ;
                        rdfs:subClassOf bm:BusinessModel ;
                        rdfs:comment "This business model allows the convertion from Celsius to Fahrenheit." .
 
@@ -120,8 +120,8 @@ ex:Temperature_P rdf:type owl:NamedIndividual ,
                  bm:hasParameterLabel "temperature_c" ;
                  bm:hasParameterType "float" .
 
-ex:CelsiusToFahrenheit_I rdf:type owl:NamedIndividual ,
-                                  ex:CelsiusToFahrenheit ;
+ex:CelsiusToFahrenheit rdf:type owl:NamedIndividual ,
+                                ex:CelsiusToFahrenheitBM ;
                          bm:requiresMetadata ex:Temperature_C_MD;
                          bm:hasExternalCode ex:CelsiusToFahrenheit.py ;
                          bm:hasParameter ex:Temperature_P .

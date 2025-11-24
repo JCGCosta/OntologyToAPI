@@ -41,11 +41,14 @@ GET_REQUIRED_PARAMETERS_FOR_BM_QUERY = """
           FILTER (?bm = <"""
 
 GET_EXTERNAL_CODE_FOR_BM_QUERY = """
-        SELECT ?bm ?ec ?pf ?rl ?hf
+        SELECT ?bm ?ec ?pf ?rl ?hf ?bmt ?desc
         WHERE {
           ?bm <http://www.cedri.com/OntologyToAPI-BusinessModel#hasExternalCode> ?ec .
           ?ec <http://www.cedri.com/OntologyToAPI-ExternalCode#hasPythonFile> ?pf .
           ?ec <http://www.cedri.com/OntologyToAPI-ExternalCode#requiresLib> ?rl .
           ?ec <http://www.cedri.com/OntologyToAPI-ExternalCode#hasFunction> ?hf .
+          ?bm rdf:type ?bmt .
+          ?bmt rdfs:comment ?desc .
+          FILTER(?bmt != owl:NamedIndividual)
         }
         """

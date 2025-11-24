@@ -93,8 +93,8 @@ class APIGenerator:
                 path=f"/{name[0]}/{name[1]}/run",
                 endpoint=handler,
                 methods=["POST"],
-                name=f"This endpoint executes the {bm_dt.name} business model, and retrieve it`s results.",
-                tags=[f"Business Model ({bm_dt.name})"],
+                name=bm_dt.desc,
+                tags=[f"Business Model ({name[0]})"],
             )
             logging.info(f'Added {bm_name} running API route...')
         return self.app

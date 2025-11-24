@@ -74,11 +74,12 @@ class Ontology:
             if not func_path.exists() or not func_path.is_file():
                 raise FileNotFoundError(f'The external code file for the {bm_name} business model could not be found at "{func_path}"')
             BMs[bm_name] = BusinessModel(name=bm_name.split(":")[-1],
-                               requiresMetadata=required_metadata,
-                               requiresParameters={str(l): t for _, l, t in required_parameters},
-                               externalCode=ExternalCode(
-                                    pythonFile=str(func_path),
-                                    function=str(ec[4]),
-                                    requiresLib=str(ec[3]).split(",")))
+                desc=str(ec[6]) if ec[6] is not None else f"Business Model for the {bm_name} business model",
+                requiresMetadata=required_metadata,
+                requiresParameters={str(l): t for _, l, t in required_parameters},
+                externalCode=ExternalCode(
+                    pythonFile=str(func_path),
+                    function=str(ec[4]),
+                    requiresLib=str(ec[3]).split(",")))
             logging.info(f'{bm_name} BUSINESS MODEL serialized successfully;')
         self.bms = BMs

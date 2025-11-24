@@ -15,14 +15,13 @@ class UnQLiteConnection:
         if parsed.scheme not in ("unqlite+asyncio",):
             raise ValueError(f"Unsupported scheme: {parsed.scheme}. Use 'unqlite+asyncio'.")
 
-        path = unquote(parsed.netloc or "")
+        path = raw.split(":")[-1][2:]
         if not path:
             raise ValueError(f"Empty database path in connection string.")
         if path == "/:memory:":
             db_path = ":memory:"
         else:
             db_path = path
-
         try:
             self._db = UnQLite(db_path)
         except Exception as e:
