@@ -1,9 +1,8 @@
 Change Log
 ===============
-VERSION="0.0.18"
-LAST_UPDATE="24/11/2025"
+VERSION="0.0.19"
+LAST_UPDATE="15/12/2025"
 ------------------
-- Update the BM ontology both in the file and README.md
-- Added description information for the BM endpoint by getting the rdfs:comment from the ontology BM concept
-- Fix with pathing issues in Linux/Mac in the UNQLITEConnection.py
+- Update README.txt with latest instructions.
+- Added Wiki to at https://github.com/JCGCosta/OntologyToAPI/wiki
 ------------------
