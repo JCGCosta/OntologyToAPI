@@ -57,7 +57,8 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.cedri.com/OntologyToAPI-BusinessModel#hasParameter
 :hasParameter rdf:type owl:ObjectProperty ;
               rdfs:domain :BusinessModel ;
-              rdfs:range :Parameter .
+              rdfs:range :Parameter ;
+              rdfs:comment "A business model with some endpoint url API parameters" .
 
 
 ###  http://www.cedri.com/OntologyToAPI-BusinessModel#requiresMetadata
@@ -66,6 +67,14 @@ xsd:duration rdf:type rdfs:Datatype .
                   rdfs:domain :BusinessModel ;
                   rdfs:range <http://www.cedri.com/OntologyToAPI-Metadata#Metadata> ;
                   rdfs:comment "The metadata required to achieve some goal of a business model" .
+
+
+###  http://www.cedri.com/OntologyToAPI-BusinessModel#hasOutputMetadata
+:hasOutputMetadata rdf:type owl:ObjectProperty ,
+                           owl:InverseFunctionalProperty ;
+                  rdfs:domain :BusinessModel ;
+                  rdfs:range <http://www.cedri.com/OntologyToAPI-Metadata#Metadata> ;
+                  rdfs:comment "The metadata that represent the output data of one API endpoint" .
 
 
 #################################################################

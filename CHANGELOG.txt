@@ -1,8 +1,11 @@
 Change Log
 ===============
-VERSION="0.0.19"
-LAST_UPDATE="15/12/2025"
+VERSION="0.0.20"
+LAST_UPDATE="11/02/2026"
 ------------------
-- Update README.txt with latest instructions.
-- Added Wiki to at https://github.com/JCGCosta/OntologyToAPI/wiki
+- Added to the Ontological Framework in the Business Model ontology a
+  concept to link a business model to an output metadata: this is aligned
+  with the integration goals with user interfaces and other systems by providing
+  a data schema of the output.
+- Added Wiki at https://github.com/JCGCosta/OntologyToAPI/wiki
 ------------------
