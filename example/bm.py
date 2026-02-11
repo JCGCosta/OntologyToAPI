@@ -7,15 +7,7 @@ async def convert_temperature_c_to_f(data):
             "converted": data.params["temperature_c"] * 9 / 5 + 32,
             "test": {
                 "inner": "lorem ipsum",
-            },
-            "test2": [
-                {
-                    "inner1": "lorem ipsum 1",
-                },
-                {
-                    "inner1": "lorem ipsum 2",
-                }
-            ]
+            }
         }
     else:
         return {

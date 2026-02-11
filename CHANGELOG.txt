@@ -1,10 +1,7 @@
 Change Log
 ===============
-VERSION="0.0.21"
+VERSION="0.0.22"
 LAST_UPDATE="11/02/2026"
 ------------------
-- Added a mechanism to automatically get the expected output
-  from the ontology and add the expected response schema.
-- Added to the example the updates required to test the new
-  feature of response schema.
+- Fixed the nested model automatically generation.
 ------------------

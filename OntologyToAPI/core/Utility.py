@@ -5,7 +5,7 @@ import os
 import logging
 from pathlib import Path
 from pydantic import BaseModel, create_model, ConfigDict
-from typing import Any, List, Dict, Union
+from typing import Any, List, Dict, Union, Optional
 import rdflib
 from Settings import auto_config as cfg
 
@@ -97,12 +97,12 @@ def build_nested_model(name: str, flat_data: Dict[str, Any]) -> type[BaseModel]:
             if children:
                 sub_model = generate_pydantic(f"{field_name}Model", children)
                 if field_type_str == 'object_list':
-                    fields[field_name] = (List[sub_model], ...)
+                    fields[field_name] = (Optional[List[sub_model]], None)
                 else:
-                    fields[field_name] = (sub_model, ...)
+                    fields[field_name] = (Optional[sub_model], None)
             else:
                 python_type = TYPE_MAP.get(field_type_str, Any)
-                fields[field_name] = (python_type, ...)
+                fields[field_name] = (Optional[python_type], None)
         return create_model(model_name, **fields, __config__=ConfigDict(extra='allow'))
 
     return generate_pydantic(name, tree)
