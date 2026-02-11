@@ -4,7 +4,20 @@ import subprocess
 import os
 import logging
 from pathlib import Path
+from pydantic import BaseModel, create_model, ConfigDict
+from typing import Any, List, Dict, Union
+import rdflib
 from Settings import auto_config as cfg
+
+TYPE_MAP = {
+    'float': float,
+    'str': str,
+    'int': int,
+    'bool': bool,
+    'object': dict,
+    'list': list,
+    'object_list': list
+}
 
 def handle_upload_file(uploaded_file):
     UPLOAD_DIR = Path(cfg.UPLOAD_DIR)
@@ -62,3 +75,34 @@ def ensure_package_installed(package_name):
         install_package(package_name)
     else:
         logging.info(f"Package '{package_name}' is already installed.")
+
+
+def build_nested_model(name: str, flat_data: Dict[str, Any]) -> type[BaseModel]:
+    tree = {}
+    for key, (rdf_type, _) in flat_data.items():
+        parts = key.split('.')
+        current = tree
+        for i, part in enumerate(parts):
+            if part not in current:
+                current[part] = {"_children": {}}
+            if i == len(parts) - 1:
+                current[part]["_type"] = str(rdf_type)
+            current = current[part]["_children"]
+
+    def generate_pydantic(model_name: str, node_dict: Dict) -> type[BaseModel]:
+        fields = {}
+        for field_name, metadata in node_dict.items():
+            field_type_str = metadata.get("_type", "object")
+            children = metadata.get("_children")
+            if children:
+                sub_model = generate_pydantic(f"{field_name}Model", children)
+                if field_type_str == 'object_list':
+                    fields[field_name] = (List[sub_model], ...)
+                else:
+                    fields[field_name] = (sub_model, ...)
+            else:
+                python_type = TYPE_MAP.get(field_type_str, Any)
+                fields[field_name] = (python_type, ...)
+        return create_model(model_name, **fields, __config__=ConfigDict(extra='allow'))
+
+    return generate_pydantic(name, tree)

@@ -10,7 +10,7 @@ from OntologyToAPI.core.DTO.Source import *
 from OntologyToAPI.core.DTO.BusinessModel import *
 
 from OntologyToAPI.core.Connectors.IndentifyConnector import identifyConnector
-from OntologyToAPI.core.Utility import ensure_package_installed
+from OntologyToAPI.core.Utility import ensure_package_installed, build_nested_model
 
 class Ontology:
     def __init__(self):
@@ -67,6 +67,9 @@ class Ontology:
             bm_name = self.g.qname(ec[0])
             required_metadata = self._verify_metadata(GET_REQUIRED_MD_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
             required_parameters = self.g.query(GET_REQUIRED_PARAMETERS_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
+            required_output_parameters = self.g.query(GET_REQUIRED_OUTPUT_METADATA_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
+            response_schema = {str(self.g.qname(out).split(":")[-1]) : (out_t, None) for _, out, out_t in required_output_parameters}
+            response_schema = build_nested_model("OutputSchema", response_schema) if response_schema else None
             for module in str(ec[3]).split(","): ensure_package_installed(module)
             func_path = Path(str(ec[2])).expanduser()
             if not func_path.is_absolute(): func_path = (Path.cwd() / func_path).resolve(strict=False)
@@ -75,6 +78,7 @@ class Ontology:
                 raise FileNotFoundError(f'The external code file for the {bm_name} business model could not be found at "{func_path}"')
             BMs[bm_name] = BusinessModel(name=bm_name.split(":")[-1],
                 desc=str(ec[6]) if ec[6] is not None else f"Business Model for the {bm_name} business model",
+                hasOutputMetadata=response_schema,
                 requiresMetadata=required_metadata,
                 requiresParameters={str(l): t for _, l, t in required_parameters},
                 externalCode=ExternalCode(

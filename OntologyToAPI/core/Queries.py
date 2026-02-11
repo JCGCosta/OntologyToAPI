@@ -52,3 +52,10 @@ GET_EXTERNAL_CODE_FOR_BM_QUERY = """
           FILTER(?bmt != owl:NamedIndividual)
         }
         """
+
+GET_REQUIRED_OUTPUT_METADATA_FOR_BM_QUERY = """
+        SELECT ?bm ?out ?out_type
+        WHERE {
+          ?bm <http://www.cedri.com/OntologyToAPI-BusinessModel#hasOutputMetadata> ?out .
+          ?out <http://www.cedri.com/OntologyToAPI-Metadata#hasType> ?out_type .
+          FILTER (?bm = <"""

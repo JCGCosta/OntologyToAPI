@@ -7,6 +7,7 @@ from inspect import Signature, Parameter
 from Settings import auto_config as cfg
 from datetime import date
 from types import SimpleNamespace
+from pydantic import create_model, ConfigDict
 
 from OntologyToAPI.core.Utility import *
 from OntologyToAPI.core.Ontology import Ontology
@@ -89,12 +90,14 @@ class APIGenerator:
             name = bm_name.split(":")
             ec_func = import_function_from_file(filepath=bm_dt.externalCode.pythonFile, function_name=bm_dt.externalCode.function)
             handler = create_business_model_handler(bm_dt.requiresMetadata, bm_dt.requiresParameters, ec_func)
+            response_model = bm_dt.hasOutputMetadata
             self.app.add_api_route(
                 path=f"/{name[0]}/{name[1]}/run",
                 endpoint=handler,
                 methods=["POST"],
                 name=bm_dt.desc,
                 tags=[f"Business Model ({name[0]})"],
+                response_model=response_model,
             )
             logging.info(f'Added {bm_name} running API route...')
         return self.app

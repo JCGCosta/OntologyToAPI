@@ -17,19 +17,54 @@ ex:CelsiusToFahrenheitBM rdf:type owl:Class ;
 
 # Individuals for Business Models
 
+# Business Model External Code (Data Transformation)
 ex:CelsiusToFahrenheit.py rdf:type owl:NamedIndividual ,
                                    excode:ExternalCode ;
                           excode:hasFunction "convert_temperature_c_to_f" ;
                           excode:hasPythonFile "bm.py" ;
                           excode:requiresLib "requests" .
 
+# Endpoint Parameters (Expected Inputs)
 ex:Temperature_P rdf:type owl:NamedIndividual ,
                           bm:Parameter ;
                  bm:hasParameterLabel "temperature_c" ;
                  bm:hasParameterType "float" .
 
+# Endpoint Output Schema (Expected Output)
+ex:original rdf:type owl:NamedIndividual ,
+                              md:Metadata ;
+                     md:hasType "float" .
+
+ex:converted rdf:type owl:NamedIndividual ,
+                              md:Metadata ;
+                     md:hasType "float" .
+
+ex:test rdf:type owl:NamedIndividual ,
+                              md:Metadata ;
+                     md:hasType "object" .
+
+ex:test.inner rdf:type owl:NamedIndividual ,
+                              md:Metadata ;
+                     md:hasType "str" .
+
+ex:test2 rdf:type owl:NamedIndividual ,
+                              md:Metadata ;
+                     md:hasType "object_list" .
+
+ex:test2.inner1 rdf:type owl:NamedIndividual ,
+                              md:Metadata ;
+                     md:hasType "str" .
+
+
+# Business Model concepts gathering
 ex:CelsiusToFahrenheit rdf:type owl:NamedIndividual ,
                                   ex:CelsiusToFahrenheitBM ;
                          bm:requiresMetadata ex:Temperature_C_MD;
                          bm:hasExternalCode ex:CelsiusToFahrenheit.py ;
-                         bm:hasParameter ex:Temperature_P .
+                         bm:hasParameter ex:Temperature_P ;
+                         bm:hasOutputMetadata ex:original ,
+                                              ex:converted ,
+                                              ex:test ,
+                                              ex:test.inner ,
+                                              ex:test2 ,
+                                              ex:test2.inner1 .
