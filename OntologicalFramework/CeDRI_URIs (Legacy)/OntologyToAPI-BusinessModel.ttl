@@ -1,4 +1,4 @@
-@prefix : <https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#> .
+@prefix : <http://www.cedri.com/OntologyToAPI-BusinessModel#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -6,7 +6,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix md: <http://www.cedri.com/OntologyToAPI-Metadata#> .
 @prefix excode: <http://www.cedri.com/OntologyToAPI-ExternalCode#> .
-@base <https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#> .
+@base <http://www.cedri.com/OntologyToAPI-BusinessModel#> .
 
 :v1.0.10 rdf:type owl:Class .
 
@@ -23,12 +23,12 @@
 #    Classes
 #################################################################
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#BusinessModel
+###  http://www.cedri.com/OntologyToAPI-BusinessModel#BusinessModel
 :BusinessModel rdf:type owl:Class ;
                rdfs:comment "represents a business model that is related with metadata and can have external code" .
 
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#Parameter
+###  http://www.cedri.com/OntologyToAPI-BusinessModel#Parameter
 :Parameter rdf:type owl:Class ;
            rdfs:comment "An parameter required to run an Business Model" .
 
@@ -36,21 +36,21 @@
 #    Object Properties
 #################################################################
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasExternalCode
+###  http://www.cedri.com/OntologyToAPI-BusinessModel#hasExternalCode
 :hasExternalCode rdf:type owl:ObjectProperty ;
                  rdfs:domain :BusinessModel ;
                  rdfs:range excode:ExternalCode ;
                  rdfs:comment "A business model have some external code" .
 
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasParameter
+###  http://www.cedri.com/OntologyToAPI-BusinessModel#hasParameter
 :hasParameter rdf:type owl:ObjectProperty ;
               rdfs:domain :BusinessModel ;
               rdfs:range :Parameter ;
               rdfs:comment "A business model with some endpoint url API parameters" .
 
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#requiresMetadata
+###  http://www.cedri.com/OntologyToAPI-BusinessModel#requiresMetadata
 :requiresMetadata rdf:type owl:ObjectProperty ,
                            owl:InverseFunctionalProperty ;
                   rdfs:domain :BusinessModel ;
@@ -58,7 +58,7 @@
                   rdfs:comment "The metadata required to achieve some goal of a business model" .
 
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasOutputMetadata
+###  http://www.cedri.com/OntologyToAPI-BusinessModel#hasOutputMetadata
 :hasOutputMetadata rdf:type owl:ObjectProperty ,
                            owl:InverseFunctionalProperty ;
                   rdfs:domain :BusinessModel ;
@@ -70,13 +70,13 @@
 #    Data properties
 #################################################################
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasParameterLabel
+###  http://www.cedri.com/OntologyToAPI-BusinessModel#hasParameterLabel
 :hasParameterLabel rdf:type owl:DatatypeProperty ;
                    rdfs:domain :Parameter ;
                    rdfs:range xsd:string .
 
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasParameterType
+###  http://www.cedri.com/OntologyToAPI-BusinessModel#hasParameterType
 :hasParameterType rdf:type owl:DatatypeProperty ;
                   rdfs:domain :Parameter ;
                   rdfs:range xsd:string .

@@ -1,11 +1,11 @@
-@prefix : <https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#> .
+@prefix : <http://www.cedri.com/OntologyToAPI-Metadata#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix comm: <http://www.cedri.com/OntologyToAPI-Communications#> .
-@base <https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#> .
+@base <http://www.cedri.com/OntologyToAPI-Metadata#> .
 
 :v1.0.10 rdf:type owl:Class .
 
@@ -21,12 +21,12 @@
 #    Classes
 #################################################################
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#Metadata
+###  http://www.cedri.com/OntologyToAPI-Metadata#Metadata
 :Metadata rdf:type owl:Class ;
           rdfs:comment "The metadata of any kind of data" .
 
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#Source
+###  http://www.cedri.com/OntologyToAPI-Metadata#Source
 :Source rdf:type owl:Class ;
         rdfs:comment "The source of an given data" .
 
@@ -34,7 +34,7 @@
 #    Object Properties
 #################################################################
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasCommunicationTechnology
+###  http://www.cedri.com/OntologyToAPI-Metadata#hasCommunicationTechnology
 :hasCommunicationTechnology rdf:type owl:ObjectProperty ,
                                      owl:FunctionalProperty ;
                             rdfs:domain :Source ;
@@ -42,7 +42,7 @@
                             rdfs:comment "The metadata utilizes a communication technology to be achievable" .
 
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasSource
+###  http://www.cedri.com/OntologyToAPI-Metadata#hasSource
 :hasSource rdf:type owl:ObjectProperty ,
                     owl:FunctionalProperty ;
            rdfs:domain :Metadata ;
@@ -54,7 +54,7 @@
 #    Data properties
 #################################################################
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasDescription
+###  http://www.cedri.com/OntologyToAPI-Metadata#hasDescription
 :hasDescription rdf:type owl:DatatypeProperty ,
                          owl:FunctionalProperty ;
                 rdfs:domain :Source ;
@@ -62,7 +62,7 @@
                 rdfs:comment "the description of the purpose of a query from a specific source" .
 
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasQuery
+###  http://www.cedri.com/OntologyToAPI-Metadata#hasQuery
 :hasQuery rdf:type owl:DatatypeProperty ,
                    owl:FunctionalProperty ;
           rdfs:domain :Source ;
@@ -70,7 +70,7 @@
           rdfs:comment "an query to retrieve the data from a given source" .
 
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasType
+###  http://www.cedri.com/OntologyToAPI-Metadata#hasType
 :hasType rdf:type owl:DatatypeProperty ,
                   owl:FunctionalProperty ;
          rdfs:domain :Metadata ;
