@@ -1,10 +1,10 @@
-@prefix : <https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#> .
+@prefix : <https://github.com/JCGCosta/OntologyToAPI/wiki/OntologyToAPI_ExternalCode#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#> .
+@base <https://github.com/JCGCosta/OntologyToAPI/wiki/OntologyToAPI_ExternalCode#> .
 
 :v1.0.10 rdf:type owl:Class .
 
@@ -19,7 +19,7 @@
 #    Classes
 #################################################################
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#ExternalCode
+###  https://github.com/JCGCosta/OntologyToAPI/wiki/OntologyToAPI_ExternalCode#ExternalCode
 :ExternalCode rdf:type owl:Class ;
               rdfs:comment "is the literal representation of a external code within a system" .
 
@@ -27,7 +27,7 @@
 #    Data properties
 #################################################################
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasFunction
+###  https://github.com/JCGCosta/OntologyToAPI/wiki/OntologyToAPI_ExternalCode#hasFunction
 :hasFunction rdf:type owl:DatatypeProperty ,
                       owl:FunctionalProperty ;
              rdfs:domain :ExternalCode ;
@@ -35,7 +35,7 @@
              rdfs:comment "a function name write in python" .
 
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#hasPythonFile
+###  https://github.com/JCGCosta/OntologyToAPI/wiki/OntologyToAPI_ExternalCode#hasPythonFile
 :hasPythonFile rdf:type owl:DatatypeProperty ,
                         owl:FunctionalProperty ;
                rdfs:domain :ExternalCode ;
@@ -43,7 +43,7 @@
                rdfs:comment "the python file path of an external code" .
 
 
-###  https://github.com/JCGCosta/OntologyToAPI/wiki/Vocabulary#requiresLib
+###  https://github.com/JCGCosta/OntologyToAPI/wiki/OntologyToAPI_ExternalCode#requiresLib
 :requiresLib rdf:type owl:DatatypeProperty ,
                       owl:FunctionalProperty ;
              rdfs:domain :ExternalCode ;
