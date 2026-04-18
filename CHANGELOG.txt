@@ -1,9 +1,7 @@
 Change Log
 ===============
-VERSION="0.0.23"
-LAST_UPDATE="21/02/2026"
+VERSION="0.0.24"
+LAST_UPDATE="18/04/2026"
 ------------------
-- Remove unnecessary triples in the ontological framework.
-- Corrections on the prefixes and versioning.
-- Update in the class, obj, data properties position in the document to make it more readable.
+- Fixed a bug in which the type as it was a rdflib object was not recognized by the fastapi auto route generation.
 ------------------
