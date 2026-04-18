@@ -38,7 +38,7 @@ def create_business_model_handler(required_metadata: list, requiresParameters:di
         result = await external_function(aggregated_res)
         return result
     params = []
-    for pl, pt in requiresParameters.items(): params.append(Parameter(pl, Parameter.POSITIONAL_OR_KEYWORD, default=None, annotation=pt))
+    for pl, pt in requiresParameters.items(): params.append(Parameter(pl, Parameter.POSITIONAL_OR_KEYWORD, default=None, annotation=str(pt)))
     handler.__signature__ = Signature(parameters=params)
     return handler
 

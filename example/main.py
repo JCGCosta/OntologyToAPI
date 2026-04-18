@@ -23,8 +23,8 @@ if __name__ == "__main__":
     configuring_a_sample_sqlite_database()
     APIGen = APIGenerator(showLogs=True)
     APIGen.load_ontologies(paths=[
-        "metadata_example.ttl",
-        "bm_example.ttl"
+        "./metadata_example.ttl",
+        "./bm_example.ttl"
     ])
     APIGen.serialize_ontologies()
     api_app = APIGen.generate_api_routes()

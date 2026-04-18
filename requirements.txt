@@ -1,6 +1,16 @@
 setuptools
+
+# Dependencies for async operations in specific databases
+
+asyncpg # Async PostgreSQL driver
+asyncio~=4.0.0 # Core async library
+unqlite~=0.9.9 # UnQLite driver (The async version is included in the main package using asyncio)
+aiomysql~=0.2.0 # Async MySQL driver
+aiosqlite~=0.21.0 # Async SQLite driver
+motor~=3.7.1 # Async MongoDB driver
+aiofiles~=25.1.0 # Async file operations
+
 SQLAlchemy~=2.0.41
-pydantic~=2.11.7
 requests~=2.32.4
 pymongo~=4.13.2
 rdflib~=7.1.4
@@ -8,12 +18,3 @@ fastapi~=0.115.14
 uvicorn~=0.35.0
 python-multipart~=0.0.20
 
-# Dependencies for async operations in specific databases
-
-asyncio~=4.0.0 # Core async library
-unqlite~=0.9.9 # UnQLite driver (The async version is included in the main package using asyncio)
-asyncpg~=0.27.0 # Async PostgreSQL driver
-aiomysql~=0.2.0 # Async MySQL driver
-aiosqlite~=0.21.0 # Async SQLite driver
-motor~=3.7.1 # Async MongoDB driver
-aiofiles~=25.1.0 # Async file operations
