@@ -69,7 +69,7 @@ class Ontology:
             required_parameters = self.g.query(GET_REQUIRED_PARAMETERS_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
             required_output_parameters = self.g.query(GET_REQUIRED_OUTPUT_METADATA_FOR_BM_QUERY + URIRef(ec[0]) + ">)}")
             response_schema = {str(self.g.qname(out).split(":")[-1]) : (out_t, None) for _, out, out_t in required_output_parameters}
-            response_schema = build_nested_model("OutputSchema", response_schema) if response_schema else None
+            response_schema = build_nested_model(f"{bm_name.split(":")[-1]}_OutputSchema", response_schema) if response_schema else None
             for module in str(ec[3]).split(","): ensure_package_installed(module)
             func_path = Path(str(ec[2])).expanduser()
             if not func_path.is_absolute(): func_path = (Path.cwd() / func_path).resolve(strict=False)

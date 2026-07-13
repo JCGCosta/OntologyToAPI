@@ -1,7 +1,8 @@
 Change Log
 ===============
-VERSION="0.0.24"
-LAST_UPDATE="18/04/2026"
+VERSION="0.0.25"
+LAST_UPDATE="13/07/2026"
 ------------------
-- Fixed a bug in which the type as it was a rdflib object was not recognized by the fastapi auto route generation.
+- Changed the default name of an output schema to the concatenation of the BM name + _OutputSchema, to simplify debugging in docs.
+- Added support to multi file uploads by adding "List[UploadFile]" or "list[UploadFile]" in the parameter type in the BM ontology, the solution required a workaround because of an inference problems with the swagger ui and the OAS 3.0 (Ref. https://github.com/fastapi/fastapi/pull/15069 and https://github.com/fastapi/fastapi/discussions/14975).
 ------------------

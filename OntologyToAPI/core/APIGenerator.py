@@ -1,19 +1,32 @@
-from fastapi import FastAPI, UploadFile
+from fastapi import FastAPI, UploadFile as UF, File
 from fastapi.responses import RedirectResponse
-from typing import List
+from typing import List, Annotated
 import pprint, logging
 from pathlib import Path
 from inspect import Signature, Parameter
 from Settings import auto_config as cfg
 from datetime import date
 from types import SimpleNamespace
-from pydantic import create_model, ConfigDict
+from pydantic import create_model, ConfigDict, WithJsonSchema
 
 from OntologyToAPI.core.Utility import *
 from OntologyToAPI.core.Ontology import Ontology
 
 UPLOAD_DIR = Path(cfg.UPLOAD_DIR)
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+UploadFile = Annotated[UF, WithJsonSchema({"type": "string", "format": "binary"})]
+FILE_TYPE_MAPPING = {
+    "List[UploadFile]": List[UploadFile],
+    "list[UploadFile]": List[UploadFile]
+}
+
+def _handle_type_expections(parameter_type):
+    actual_type, default_type = str(parameter_type), None
+    if actual_type in FILE_TYPE_MAPPING.keys():
+        actual_type = FILE_TYPE_MAPPING.get(actual_type, str)
+        default_type = File(default=None)
+    return actual_type, default_type
 
 def create_metadata_handler(connector, query: str, name: str):
     async def handler():
@@ -38,7 +51,9 @@ def create_business_model_handler(required_metadata: list, requiresParameters:di
         result = await external_function(aggregated_res)
         return result
     params = []
-    for pl, pt in requiresParameters.items(): params.append(Parameter(pl, Parameter.POSITIONAL_OR_KEYWORD, default=None, annotation=str(pt)))
+    for pl, pt in requiresParameters.items():
+        actual_type, default_type = _handle_type_expections(pt)
+        params.append(Parameter(pl, Parameter.POSITIONAL_OR_KEYWORD, default=default_type, annotation=actual_type))
     handler.__signature__ = Signature(parameters=params)
     return handler
 

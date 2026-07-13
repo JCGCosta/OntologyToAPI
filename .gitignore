@@ -2,6 +2,7 @@
 /.idea
 /tmp
 /samples
+/FutureChanges
 test.py
 energy_members.unqlite
 /example/example.db
